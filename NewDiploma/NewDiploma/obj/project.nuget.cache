@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Mtyld1AmdoHWHn0v87CSEctN5jx3EGAco5cUN43/ZsPKvUU8ThZX8Cp2ES08vXJal2FDMgNrpAnrAZwQoHi7mg==",
+  "dgSpecHash": "BSUBsNbtJX0uGTmSel+RigDi3M1NgLjhaRsd7qEYFlevaiREMpZkmAOlHzsdQTrgyryYHzu2z29NmCEFc1/gjg==",
   "success": true,
-  "projectFilePath": "C:\\repos\\NewDiploma\\NewDiploma\\NewDiploma.csproj",
+  "projectFilePath": "C:\\Users\\Андрей\\Documents\\newDiploma\\NewDiploma\\NewDiploma\\NewDiploma.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Андрей\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\Андрей\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
