@@ -1,0 +1,111 @@
+﻿@using NewDiploma.Data.Identity;
+@inject SignInManager<ApplicationIdentityUser> SignInManager
+@inject UserManager<ApplicationIdentityUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] / My RSREU</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/NewDiploma.styles.css" asp-append-version="true" />
+</head>
+<body>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <header>
+            <div id="header-items">
+                <span id="date"></span>
+                <div id="header-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Settings">
+                        <img src="~/img/svg/Settings.svg">
+                    </a>
+                </div>
+            </div>
+        </header>
+    }
+    <div>
+        <main role="main">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <div id="nav">
+                    <div id="nav-items">
+                        <div class="nav-main-item">
+                            <div class="nav-line">
+                                <div class="nav-item">
+                                    <img src="~/img/pic/test.png" draggable="false" />
+                                </div>
+                                <span id="nav-main-span">@UserManager.GetUserAsync(User).Result.Name</span>
+                            </div>
+                        </div>
+                        <a class="nav-links" asp-area="" asp-controller="Home" asp-action="Schedule">
+                            <div class="nav-line">
+                                <div class="nav-item">
+                                    <img src="~/img/svg/Calendar.svg" draggable="false">
+                                </div>
+                                <span>Расписание</span>
+                            </div>
+                        </a>
+                        <a class="nav-links" asp-area="" asp-controller="Home" asp-action="Presents">
+                            <div class="nav-line">
+                                <div class="nav-item">
+                                    <img src="~/img/svg/Couples.svg" draggable="false">
+                                </div>
+                                <span>Присутствующие</span>
+                            </div>
+                        </a>
+                        <a class="nav-links" asp-area="" asp-controller="Home" asp-action="Students">
+                            <div class="nav-line">
+                                <div class="nav-item">
+                                    <img src="~/img/svg/Groups.svg" draggable="false">
+                                </div>
+                                <span>Студенты</span>
+                            </div>
+                        </a>
+                        <a class="nav-links" asp-area="" asp-controller="Home" asp-action="GroupsPage">
+                            <div class="nav-line">
+                                <div class="nav-item">
+                                    <img src="~/img/svg/Couples.svg" draggable="false">
+                                </div>
+                                <span>Посещаемость</span>
+                            </div>
+                        </a>
+                        <a class="nav-links" asp-area="" asp-controller="Home" asp-action="Materials">
+                            <div class="nav-line">
+                                <div class="nav-item">
+                                    <img src="~/img/svg/Materials.svg" draggable="false">
+                                </div>
+                                <span>Методички</span>
+                            </div>
+                        </a>
+                        <a class="nav-links" asp-area="" asp-controller="Home" asp-action="Notification">
+                            <div class="nav-line">
+                                <div class="nav-item">
+                                    <img src="~/img/svg/Notification.svg" draggable="false">
+                                </div>
+                                <span>Объявления</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="render-body">
+                    @RenderBody()
+                </div>
+            }
+            else
+            {
+                <div class="">
+                    @RenderBody()
+                </div>
+            }
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/moment/moment-with-locales.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

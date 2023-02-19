@@ -1,0 +1,50 @@
+﻿@using NewDiploma.Data.Identity;
+@inject SignInManager<ApplicationIdentityUser> SignInManager
+@inject UserManager<ApplicationIdentityUser> UserManager
+@{
+    ViewData["Title"] = "Настройки";
+}
+
+<div class="group">
+    <h1>@ViewData["Title"]</h1>
+</div>
+<div class="group">
+    <partial name="_LoginPartial" />
+    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" method="post">
+                <button type="submit" class="nav-link">Выйти</button>
+    </form>
+    @*@if (User.Identity?.IsAuthenticated == true && User.IsInRole("Admin"))
+    {
+        <span>YOLO I'M ADMIN</span>
+        <button type="submit" class="nav-link">Выйти</button>
+    }
+    @if (UserManager.IsInRoleAsync)
+    {
+        <span>YOLO I'M Teacher</span>
+    }
+    @if (User.Identity?.IsAuthenticated == true && User .IsInRole("Student"))
+    {
+        <span>YOLO I'M Student</span>
+    }*@
+    
+    @*@{
+        var user = await UserManager.GetUserAsync(User);
+        var roles = await UserManager.GetRolesAsync(user);
+
+        if(roles.Contains("Admin"))
+        {
+            <span>YOLO I'M ADMIN</span>
+        }
+
+        if(roles.Contains("Student"))
+        {
+            <span>Студентота</span>
+        }
+
+        if(roles.Contains("Teacher"))
+        {
+            <span>Читай методичку</span>
+        }
+    }*@
+    
+</div>
