@@ -26,9 +26,9 @@
         <tbody>
             <tr>
                 <td>
-                    @foreach (var item in @Model)
+                    @foreach (var item in Model)
                     {
-                        <div class="schedule-card practice">
+                        <div class="schedule-card @(item.Type == 1?"practice":item.Type == 2?"lab":"")">
                             <p>@item.Course</p>
                             <p>гр. @item.Group</p>
                             <p>@item.Time</p>
