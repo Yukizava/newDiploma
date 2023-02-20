@@ -36,7 +36,7 @@ namespace NewDiploma.Repositories
         {
             using (IDbConnection db = Connection)
             {
-                var result = db.Query<Schedule>(@"  SELECT [Course].[name] as 'Course', [GROUP].[name] as 'Group', [User].FIO as 'Teacher', [Lesson].time as 'Time', Schedule.[type] as 'Type'
+                var result = db.Query<Schedule>(@"  SELECT [Course].[name] as 'Course', [GROUP].[name] as 'Group', [User].FIO as 'Teacher', [Lesson].time as 'Time', [Lesson].id as 'LessonNumber', Schedule.[type] as 'Type', Schedule.[Date] as 'Date'
                                                     FROM Schedule
                                                     JOIN [Group] ON [group_id] = [GROUP].id
                                                     JOIN [Course] ON [course_id] = [Course].id

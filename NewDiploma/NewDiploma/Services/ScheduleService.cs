@@ -14,7 +14,14 @@ namespace NewDiploma.Services
 
         public List<Schedule> GetSchedule()
         {
-            return _repository.GetSchedule();
+            var schedule = _repository.GetSchedule();
+
+            foreach (var item in schedule)
+            {
+                item.DayOfWeek = (int)item.Date.DayOfWeek;
+            }
+
+            return schedule;
         }
 
         public List<Student> GetStudents()

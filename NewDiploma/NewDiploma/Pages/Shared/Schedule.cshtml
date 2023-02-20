@@ -1,4 +1,6 @@
-﻿@{
+﻿@using System.Linq
+
+@{
     ViewData["Title"] = "Расписание";
 }
 
@@ -25,85 +27,220 @@
     <table class="schedule-table">
         <tbody>
             <tr>
-                <td>
-                    @foreach (var item in Model)
+                @{
+                    var currentLessons1 = ((IEnumerable<Schedule>)Model).Where(x => x.LessonNumber == 1).ToList();
+                    @for (var i = 1; i <= 6; i++)
                     {
-                        <div class="schedule-card @(item.Type == 1?"practice":item.Type == 2?"lab":"")">
-                            <p>@item.Course</p>
-                            <p>гр. @item.Group</p>
-                            <p>@item.Time</p>
-                        </div>
+                        var currentLesson = currentLessons1.FirstOrDefault(x => x.DayOfWeek == i);
+                        if (currentLesson != null)
+                        {
+                            <td>
+                                <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":"")">
+                                    <p>@currentLesson.Course</p>
+                                    <p>гр. @currentLesson.Group</p>
+                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+
                     }
-                </td>
-                <td>cell2_1</td>
-                <td>cell3_1</td>
-                <td>cell4_1</td>
-                <td>cell5_1</td>
-                <td>cell6_1</td>
+                }
             </tr>
             <tr>
-                <td>cell1_2</td>
-                <td>cell2_2</td>
-                <td>cell3_2</td>
-                <td>cell4_2</td>
-                <td>cell5_2</td>
-                <td>cell6_2</td>
+                @{
+                    var currentLessons2 = ((IEnumerable<Schedule>)Model).Where(x => x.LessonNumber == 2).ToList();
+                    @for (var i = 1; i <= 6; i++)
+                    {
+                        var currentLesson = currentLessons2.FirstOrDefault(x => x.DayOfWeek == i);
+                        if (currentLesson != null)
+                        {
+                            <td>
+                                <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":"")">
+                                    <p>@currentLesson.Course</p>
+                                    <p>гр. @currentLesson.Group</p>
+                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+
+                    }
+                }
             </tr>
             <tr>
-                <td>cell1_3</td>
-                <td>cell2_3</td>
-                <td>cell3_3</td>
-                <td>cell4_3</td>
-                <td>cell5_3</td>
-                <td>cell6_3</td>
+                @{
+                    var currentLessons3 = ((IEnumerable<Schedule>)Model).Where(x => x.LessonNumber == 3).ToList();
+                    @for (var i = 1; i <= 6; i++)
+                    {
+                        var currentLesson = currentLessons3.FirstOrDefault(x => x.DayOfWeek == i);
+                        if (currentLesson != null)
+                        {
+                            <td>
+                                <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":"")">
+                                    <p>@currentLesson.Course</p>
+                                    <p>гр. @currentLesson.Group</p>
+                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+
+                    }
+                }
             </tr>
             <tr>
-                <td>cell1_4</td>
-                <td>cell2_4</td>
-                <td>cell3_4</td>
-                <td>cell4_4</td>
-                <td>cell5_4</td>
-                <td>cell6_4</td>
+                @{
+                    var currentLessons4 = ((IEnumerable<Schedule>)Model).Where(x => x.LessonNumber == 4).ToList();
+                    @for (var i = 1; i <= 6; i++)
+                    {
+                        var currentLesson = currentLessons4.FirstOrDefault(x => x.DayOfWeek == i);
+                        if (currentLesson != null)
+                        {
+                            <td>
+                                <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":"")">
+                                    <p>@currentLesson.Course</p>
+                                    <p>гр. @currentLesson.Group</p>
+                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+
+                    }
+                }
             </tr>
             <tr>
-                <td>cell1_5</td>
-                <td>cell2_5</td>
-                <td>cell3_5</td>
-                <td>cell4_5</td>
-                <td>cell5_5</td>
-                <td>cell6_5</td>
+                @{
+                    var currentLessons5 = ((IEnumerable<Schedule>)Model).Where(x => x.LessonNumber == 5).ToList();
+                    @for (var i = 1; i <= 6; i++)
+                    {
+                        var currentLesson = currentLessons5.FirstOrDefault(x => x.DayOfWeek == i);
+                        if (currentLesson != null)
+                        {
+                            <td>
+                                <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":"")">
+                                    <p>@currentLesson.Course</p>
+                                    <p>гр. @currentLesson.Group</p>
+                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+
+                    }
+                }
             </tr>
             <tr>
-                <td>cell1_6</td>
-                <td>cell2_6</td>
-                <td>cell3_6</td>
-                <td>cell4_6</td>
-                <td>cell5_6</td>
-                <td>cell6_6</td>
+                @{
+                    var currentLessons6 = ((IEnumerable<Schedule>)Model).Where(x => x.LessonNumber == 6).ToList();
+                    @for (var i = 1; i <= 6; i++)
+                    {
+                        var currentLesson = currentLessons6.FirstOrDefault(x => x.DayOfWeek == i);
+                        if (currentLesson != null)
+                        {
+                            <td>
+                                <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":"")">
+                                    <p>@currentLesson.Course</p>
+                                    <p>гр. @currentLesson.Group</p>
+                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+
+                    }
+                }
             </tr>
             <tr>
-                <td>cell1_7</td>
-                <td>cell2_7</td>
-                <td>cell3_7</td>
-                <td>cell4_7</td>
-                <td>cell5_7</td>
-                <td>cell6_7</td>
+                @{
+                    var currentLessons7 = ((IEnumerable<Schedule>)Model).Where(x => x.LessonNumber == 7).ToList();
+                    @for (var i = 1; i <= 6; i++)
+                    {
+                        var currentLesson = currentLessons7.FirstOrDefault(x => x.DayOfWeek == i);
+                        if (currentLesson != null)
+                        {
+                            <td>
+                                <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":"")">
+                                    <p>@currentLesson.Course</p>
+                                    <p>гр. @currentLesson.Group</p>
+                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+
+                    }
+                }
             </tr>
             <tr>
-                <td>cell1_8</td>
-                <td>cell2_8</td>
-                <td>cell3_8</td>
-                <td>cell4_8</td>
-                <td>cell5_8</td>
-                <td>cell6_8</td>
+                @{
+                    var currentLessons8 = ((IEnumerable<Schedule>)Model).Where(x => x.LessonNumber == 8).ToList();
+                    @for (var i = 1; i <= 6; i++)
+                    {
+                        var currentLesson = currentLessons8.FirstOrDefault(x => x.DayOfWeek == i);
+                        if (currentLesson != null)
+                        {
+                            <td>
+                                <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":"")">
+                                    <p>@currentLesson.Course</p>
+                                    <p>гр. @currentLesson.Group</p>
+                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+
+                    }
+                }
             </tr>
             <tr>
-                <td>cell1_9</td>
-                <td>cell2_9</td>
-                <td>cell3_9</td>
-                <td>cell4_9</td>
-                <td>cell5_9</td>
-                <td>cell6_9</td>
+                @{
+                    var currentLessons9 = ((IEnumerable<Schedule>)Model).Where(x => x.LessonNumber == 9).ToList();
+                    @for (var i = 1; i <= 6; i++)
+                    {
+                        var currentLesson = currentLessons9.FirstOrDefault(x => x.DayOfWeek == i);
+                        if (currentLesson != null)
+                        {
+                            <td>
+                                <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":"")">
+                                    <p>@currentLesson.Course</p>
+                                    <p>гр. @currentLesson.Group</p>
+                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+
+                    }
+                }
             </tr>
         </tbody>
     </table>
