@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap');
+
 * {
     font-family: 'Inter', sans-serif;
 }
@@ -11,6 +12,10 @@
 html {
     font-size: 16px;
     position: relative;
+    height: 100%;
+}
+
+main {
     height: 100%;
 }
 
@@ -63,7 +68,6 @@ body {
     box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     transform: rotate(-4.72deg);
-    
 }
 
 .main-center {
@@ -364,30 +368,76 @@ body {
 
 /*Schedule*/
 
-.schedule-table{
+.group-table {
+    display: flex;
+    margin: auto 60px;
+    padding: 36px;
+    background: linear-gradient(0deg, rgba(55, 56, 84, 0.1) 0%, rgba(200, 200, 200, 0) 70.92%), #282945;
+    box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    margin-bottom: 36px;
+    overflow: auto;
+    justify-content: center;
+}
+
+.schedule-table {
     margin: 0 auto;
-    width: 60%;
     border: 1px solid;
 }
 
-table.schedule-table td {
-    padding: 10px 10px;
+.group-table::-webkit-scrollbar {
+    margin-left: -15px;
+    border-radius: 10px;
+    width: 10px;
+    background-color: #32334F;
 }
 
-.schedule-card{
+.group-table::-webkit-scrollbar-thumb {
+    background-color: #21223E;
+    border-radius: 30px;
+}
+
+.schedule-table tr {
+    border: 1px solid;
+}
+
+.schedule-table td {
+    border: 1px solid;
+}
+
+/*.schedule-card {
+    margin: 5px;
+    padding: 15px;
     background: silver;
     border-radius: 30px;
     text-align: center;
+}*/
+
+.schedule-card {
+    margin: 5px;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+    padding-top: 16px;
+    padding-bottom: 2px;
+    background-color: #282945;
+    border-radius: 40px;
+    box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
 }
 
-.lesson{
+.lesson {
     background: lightblue;
 }
 
-.practice{
+.practice {
     background: lightgreen;
 }
 
-.lab{
+.lab {
     background: red;
+}
+
+.double-lab {
+    background: red;
+    height: calc();
 }

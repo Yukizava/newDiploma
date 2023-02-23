@@ -8,7 +8,7 @@
 
         public TimeSpan Time { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime Date { get;  set; }
 
         public int DayOfWeek { get; set; }
 
