@@ -119,6 +119,7 @@ body {
     width: 100px;
     overflow: hidden;
     transition: width .2s;
+    z-index: 1;
 }
 
     #nav:hover {
@@ -257,8 +258,68 @@ body {
     cursor: pointer;
 }
 
-/*Students*/
+#nc {
+    padding-bottom: 20px;
+    color: #6B6D82;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+}
 
+#pn{
+    color: white;
+}
+
+#student-status {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    border-radius: 20px;
+    background: #D66666;
+    width: 120px;
+    height: 32px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+#student-pass {
+    background: rgba(0, 0, 0, 0);
+    text-align: center;
+    color: #6B6D82;
+    border: hidden;
+}
+
+.students-present {
+    overflow-y: auto;
+    height: 100%;
+}
+
+.students-table {
+    text-align: center;
+    width: 100%;
+    
+}
+    .students-table tbody tr td {
+        padding-bottom: 20px;
+        color: #6B6D82;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .students-table tbody tr th {
+        color: #6B6D82;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        padding-bottom: 20px;
+    }
+
+/*Students*/
 #group-right {
     display: flex;
     flex: 80%;
@@ -368,42 +429,90 @@ body {
 
 /*Schedule*/
 
-.group-table {
+/*#nav {
+    background: #282945;
+    align-items: center;
     display: flex;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100px;
+    overflow: hidden;
+    transition: width .2s;
+}*/
+
+/*.group {
     margin: auto 60px;
     padding: 36px;
     background: linear-gradient(0deg, rgba(55, 56, 84, 0.1) 0%, rgba(200, 200, 200, 0) 70.92%), #282945;
     box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     margin-bottom: 36px;
+}*/
+
+/*.group-table {
+    margin: auto 60px;
+    margin-bottom: 36px;
+    background: linear-gradient(0deg, rgba(55, 56, 84, 0.1) 0%, rgba(200, 200, 200, 0) 70.92%), #282945;
+    box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
     overflow: auto;
-    justify-content: center;
-}
+    height: 65%;
+    width: 88%;
+    position: absolute;
+}*/
 
-.schedule-table {
-    margin: 0 auto;
-    border: 1px solid;
-}
-
-.group-table::-webkit-scrollbar {
-    margin-left: -15px;
-    border-radius: 10px;
-    width: 10px;
-    background-color: #32334F;
-}
-
-.group-table::-webkit-scrollbar-thumb {
-    background-color: #21223E;
+/*ƒŒƒ≈À¿“‹*/
+.group-table {
+    position: absolute;
+    overflow-y: scroll;
+    height: 65%;
+    margin: auto 60px;
+    margin-bottom: 36px;
+    background: linear-gradient(0deg, rgba(55, 56, 84, 0.1) 0%, rgba(200, 200, 200, 0) 70.92%), #282945;
+    box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
 }
 
-.schedule-table tr {
-    border: 1px solid;
+    .group-table::-webkit-scrollbar {
+        margin-left: -15px;
+        border-radius: 40px;
+        width: 40px;
+        height: 40px;
+        background-color: #32334F;
+    }
+
+    .group-table::-webkit-scrollbar-thumb {
+        background-color: #21223E;
+        border-radius: 30px;
+        border: 2px solid #373854;
+        box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
+    }
+
+.schedule-table {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    /*border: 1px solid;*/
 }
 
-.schedule-table td {
-    border: 1px solid;
-}
+    .schedule-table thead tr th {
+        text-align: center;
+        font-size: 18px;
+        height: 60px;
+    }
+
+    .schedule-table tr {
+        height: 10%;
+        /*border: 1px solid;*/
+    }
+
+    .schedule-table td {
+        width: 10%;
+        padding: 5px;
+        /*border: 1px solid;*/
+    }
 
 /*.schedule-card {
     margin: 5px;
@@ -414,30 +523,46 @@ body {
 }*/
 
 .schedule-card {
-    margin: 5px;
     font-size: 14px;
     line-height: 14px;
     text-align: center;
-    padding-top: 16px;
+    padding-top: 12px;
     padding-bottom: 2px;
     background-color: #282945;
-    border-radius: 40px;
+    border-radius: 30px;
+    border: 2px solid #373854;
+    box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
+    height: 140px;
+}
+
+    .schedule-card span{
+        display: block;
+        margin-bottom: 8px;
+    }
+
+.schedule-card-nl {
+    padding-top: 16px;
+    padding-bottom: 2px;
+    height: 100%;
+    background-color: #282945;
+    border: 2px solid #373854;
+    border-radius: 30px;
     box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
 }
 
 .lesson {
-    background: lightblue;
+    background: #3B87C1;
 }
 
 .practice {
-    background: lightgreen;
+    background: #34C88A;
 }
 
 .lab {
-    background: red;
+    background: #D66666;
 }
 
 .double-lab {
-    background: red;
+    background: #D66666;
     height: calc();
 }

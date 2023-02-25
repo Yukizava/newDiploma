@@ -17,5 +17,7 @@
         public string Teacher { get; set; }
 
         public int Type { get; set; }
+
+        public string Room { get; set; }
     }
 }

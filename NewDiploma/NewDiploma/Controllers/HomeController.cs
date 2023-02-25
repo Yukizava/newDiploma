@@ -63,7 +63,8 @@ namespace NewDiploma.Controllers
 
         public IActionResult Materials()
         {
-            return View();
+            var materials = _service.GetMaterials();
+            return View(materials);
         }
 
         public IActionResult Notification()

@@ -4,11 +4,11 @@
     ViewData["Title"] = "Расписание";
 }
 
-@*<div class="group">
+<div class="group">
     <h1>@ViewData["Title"]</h1>
-</div>*@
+</div>
 
-<div class="group"> 
+<div class="group-table">
     <table class="schedule-table">
         <thead>
             <tr>
@@ -20,11 +20,6 @@
                 <th>Суббота</th>
             </tr>
         </thead>
-    </table>
-</div>
-
-<div class="group-table">
-    <table class="schedule-table">
         <tbody>
             <tr>
                 @{
@@ -36,16 +31,18 @@
                         {
                             <td>
                                 <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":currentLesson.Type == 4?"double-lab":"")">
-                                    <p>@currentLesson.Course</p>
-                                    <p>гр. @currentLesson.Group</p>
-                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                    <span>@currentLesson.Course</span>
+                                    <span>гр. @currentLesson.Group</span>
+                                    <span>ауд. @currentLesson.Room</span>
+                                    <span>@currentLesson.Time.ToString(@"hh\:mm")</span>
                                 </div>
                             </td>
                         }
                         else
                         {
                             <td>
-                                <div class="schedule-card"></div>
+                                <div class="schedule-card-nl">
+                                </div>
                             </td>
                         }
 
@@ -62,16 +59,17 @@
                         {
                             <td>
                                 <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":currentLesson.Type == 4?"double-lab":"")">
-                                    <p>@currentLesson.Course</p>
-                                    <p>гр. @currentLesson.Group</p>
-                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                    <span>@currentLesson.Course</span>
+                                    <span>гр. @currentLesson.Group</span>
+                                    <span>ауд. @currentLesson.Room</span>
+                                    <span>@currentLesson.Time.ToString(@"hh\:mm")</span>
                                 </div>
                             </td>
                         }
                         else
                         {
                             <td>
-                                <div class="schedule-card"></div>
+                                <div class="schedule-card-nl"></div>
                             </td>
                         }
 
@@ -88,16 +86,17 @@
                         {
                             <td>
                                 <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":currentLesson.Type == 4?"double-lab":"")">
-                                    <p>@currentLesson.Course</p>
-                                    <p>гр. @currentLesson.Group</p>
-                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                    <span>@currentLesson.Course</span>
+                                    <span>гр. @currentLesson.Group</span>
+                                    <span>ауд. @currentLesson.Room</span>
+                                    <span>@currentLesson.Time.ToString(@"hh\:mm")</span>
                                 </div>
                             </td>
                         }
                         else
                         {
                             <td>
-                                <div class="schedule-card"></div>
+                                <div class="schedule-card-nl"></div>
                             </td>
                         }
 
@@ -114,16 +113,17 @@
                         {
                             <td>
                                 <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":currentLesson.Type == 4?"double-lab":"")">
-                                    <p>@currentLesson.Course</p>
-                                    <p>гр. @currentLesson.Group</p>
-                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                    <span>@currentLesson.Course</span>
+                                    <span>гр. @currentLesson.Group</span>
+                                    <span>ауд. @currentLesson.Room</span>
+                                    <span>@currentLesson.Time.ToString(@"hh\:mm")</span>
                                 </div>
                             </td>
                         }
                         else
                         {
                             <td>
-                                <div class="schedule-card"></div>
+                                <div class="schedule-card-nl"></div>
                             </td>
                         }
 
@@ -140,16 +140,17 @@
                         {
                             <td>
                                 <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":currentLesson.Type == 4?"double-lab":"")">
-                                    <p>@currentLesson.Course</p>
-                                    <p>гр. @currentLesson.Group</p>
-                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                    <span>@currentLesson.Course</span>
+                                    <span>гр. @currentLesson.Group</span>
+                                    <span>ауд. @currentLesson.Room</span>
+                                    <span>@currentLesson.Time.ToString(@"hh\:mm")</span>
                                 </div>
                             </td>
                         }
                         else
                         {
                             <td>
-                                <div class="schedule-card"></div>
+                                <div class="schedule-card-nl"></div>
                             </td>
                         }
 
@@ -166,16 +167,17 @@
                         {
                             <td>
                                 <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":currentLesson.Type == 4?"double-lab":"")">
-                                    <p>@currentLesson.Course</p>
-                                    <p>гр. @currentLesson.Group</p>
-                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                    <span>@currentLesson.Course</span>
+                                    <span>гр. @currentLesson.Group</span>
+                                    <span>ауд. @currentLesson.Room</span>
+                                    <span>@currentLesson.Time.ToString(@"hh\:mm")</span>
                                 </div>
                             </td>
                         }
                         else
                         {
                             <td>
-                                <div class="schedule-card"></div>
+                                <div class="schedule-card-nl"></div>
                             </td>
                         }
 
@@ -192,16 +194,17 @@
                         {
                             <td>
                                 <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":currentLesson.Type == 4?"double-lab":"")">
-                                    <p>@currentLesson.Course</p>
-                                    <p>гр. @currentLesson.Group</p>
-                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                    <span>@currentLesson.Course</span>
+                                    <span>гр. @currentLesson.Group</span>
+                                    <span>ауд. @currentLesson.Room</span>
+                                    <span>@currentLesson.Time.ToString(@"hh\:mm")</span>
                                 </div>
                             </td>
                         }
                         else
                         {
                             <td>
-                                <div class="schedule-card"></div>
+                                <div class="schedule-card-nl"></div>
                             </td>
                         }
 
@@ -218,16 +221,17 @@
                         {
                             <td>
                                 <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":currentLesson.Type == 4?"double-lab":"")">
-                                    <p>@currentLesson.Course</p>
-                                    <p>гр. @currentLesson.Group</p>
-                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                    <span>@currentLesson.Course</span>
+                                    <span>гр. @currentLesson.Group</span>
+                                    <span>ауд. @currentLesson.Room</span>
+                                    <span>@currentLesson.Time.ToString(@"hh\:mm")</span>
                                 </div>
                             </td>
                         }
                         else
                         {
                             <td>
-                                <div class="schedule-card"></div>
+                                <div class="schedule-card-nl"></div>
                             </td>
                         }
 
@@ -244,16 +248,17 @@
                         {
                             <td>
                                 <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":currentLesson.Type == 4?"double-lab":"")">
-                                    <p>@currentLesson.Course</p>
-                                    <p>гр. @currentLesson.Group</p>
-                                    <p>@currentLesson.Time.ToString(@"hh\:mm")</p>
+                                    <span>@currentLesson.Course</span>
+                                    <span>гр. @currentLesson.Group</span>
+                                    <span>ауд. @currentLesson.Room</span>
+                                    <span>@currentLesson.Time.ToString(@"hh\:mm")</span>
                                 </div>
                             </td>
                         }
                         else
                         {
                             <td>
-                                <div class="schedule-card"></div>
+                                <div class="schedule-card-nl"></div>
                             </td>
                         }
 

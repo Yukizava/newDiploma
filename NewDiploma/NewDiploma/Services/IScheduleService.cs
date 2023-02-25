@@ -6,5 +6,6 @@ namespace NewDiploma.Services
     {
         List<Student> GetStudents();
         List<Schedule> GetSchedule();
+        List<Material> GetMaterials();
     }
 }
