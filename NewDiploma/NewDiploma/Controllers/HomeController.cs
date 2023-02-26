@@ -46,7 +46,8 @@ namespace NewDiploma.Controllers
 
         public IActionResult Presents()
         {
-            return View();
+            var present = _service.GetPresents();
+            return View(present);
         }
 
         public IActionResult Students()

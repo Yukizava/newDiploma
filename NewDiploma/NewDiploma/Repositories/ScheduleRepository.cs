@@ -63,6 +63,16 @@ namespace NewDiploma.Repositories
                 return result;
             }
         }
+        public List<Present> GetPresents()
+        {
+            using (IDbConnection db = Connection)
+            {
+                var result = db.Query<Present>(@"   SELECT [User].[FIO] as 'FIO',
+                                                    [User].[avatar_id] as 'Avatar'
+                                                    FROM [User]").ToList();
 
+                return result;
+            }
+        }
     }
 }

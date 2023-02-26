@@ -34,5 +34,10 @@ namespace NewDiploma.Services
 			return _repository.GetMaterials();
 		}
 
-	}
+        public List<Present> GetPresents()
+        {
+            return _repository.GetPresents();
+        }
+
+    }
 }
