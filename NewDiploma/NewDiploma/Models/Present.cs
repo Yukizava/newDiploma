@@ -5,5 +5,6 @@
         public string Avatar { get; set; }
         public string FIO { get; set; }
         public int Attendance { get; set; }
+        public string Group { get; set; }
     }
 }

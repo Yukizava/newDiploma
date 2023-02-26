@@ -67,9 +67,10 @@ namespace NewDiploma.Repositories
         {
             using (IDbConnection db = Connection)
             {
-                var result = db.Query<Present>(@"   SELECT [User].[FIO] as 'FIO',
-                                                    [User].[avatar_id] as 'Avatar'
-                                                    FROM [User]").ToList();
+                var result = db.Query<Present>(@"   SELECT [User].[avatar_id] as 'Avatar', [User].[FIO] as 'FIO', [Group].name as 'Group'
+                                                    FROM [StudentGroup]
+                                                    JOIN [User] ON [user_id] = [USER].id 
+                                                    JOIN [Group] ON [group_id] = [GROUP].id").ToList();
 
                 return result;
             }

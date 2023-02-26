@@ -234,7 +234,33 @@ body {
     box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
 }
 
+#present-item-a {
+    font-size: 18px;
+    text-align: center;
+    padding-top: 17px;
+    height: 60px;
+    background-color: #373854;
+    color: #FFFFFF;
+    border-radius: 40px;
+    box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
+}
+
+#present-item-h {
+    font-size: 18px;
+    text-align: center;
+    padding-top: 11px;
+    height: 60px;
+    background-color: #282945;
+    border-radius: 40px;
+    box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
+    border: 6px solid #373854;
+}
+
     #present-item:hover {
+        color: white;
+        background-color: #373854;
+    }
+    #present-item-h:hover {
         color: white;
         background-color: #373854;
     }
@@ -244,9 +270,23 @@ body {
     text-decoration: none;
 }
 
-#present-elements {
+.present-right {
     float: right;
-    height: 60px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+    .present-right a {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        text-decoration: none;
+        color: #6B6D82;
+        padding: 40px;
+    }
+
+.present-center {
+
 }
 
 .present-element {
@@ -405,15 +445,16 @@ body {
         }
 
 .input-style {
+    background: #373854;
     border-radius: 40px;
-    background: #32334F;
-    color: white;
+    color: #FFFFFF;
     height: 30px;
-    width: 400px;
+    width: 300px;
 }
 
     .input-style:focus {
         box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+        
     }
 
 .group-list {
