@@ -1,40 +1,44 @@
 ﻿@{
-	ViewData["Title"] = "Студенты";
+    ViewData["Title"] = "Студенты";
 }
 <div class="group">
     <h1>@ViewData["Title"]</h1>
 </div>
 <div class="groups">
-	<div id="group-left">
-		<input class="input-style" placeholder="Введите номер группы">
-		<div class="group-list">
-			@foreach (var item in @Model)
-			{
-				<a class="student-button" href="#">@item.GroupName</a>
-			}
-		</div>
-	</div>
+    <div id="group-left">
+        <input class="input-style fullw" placeholder="Введите номер группы">
+        <div class="group-list">
+            @foreach (var item in @Model)
+            {
+                <div class="group-item">
+                    <a href="#">
+                            <span>@item.GroupName</span>
+                    </a>
+                </div> 
+            }          
+        </div>
+    </div>
 
-	<div id="group-right">
-		<table class="student-table">
-			<thead>
-				<tr>
-					<th>Фамилия Имя Отчество</th>
-					<th>Номер группы</th>
-					<th>Год обучения</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach (var item in @Model)
-				{
-					<tr>
-						<td>@item.FIO</td>
-						<td>@item.GroupName</td>
-						<td>@item.StartYear</td>
-					</tr>
+    <div id="group-right">
+        <table class="student-table">
+            <thead>
+                <tr>
+                    <th>Фамилия Имя Отчество</th>
+                    <th>Номер группы</th>
+                    <th>Год обучения</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @Model)
+                {
+                    <tr>
+                        <td>@item.FIO</td>
+                        <td>@item.GroupName</td>
+                        <td>@item.StartYear</td>
+                    </tr>
 
-				}
-			</tbody>
-		</table>
-	</div>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

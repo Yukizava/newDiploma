@@ -235,6 +235,7 @@ body {
 }
 
 #present-item-a {
+
     font-size: 18px;
     text-align: center;
     padding-top: 17px;
@@ -264,6 +265,14 @@ body {
         color: white;
         background-color: #373854;
     }
+
+.present-links-a {
+    pointer-events: none;
+    cursor: default;
+    color: #6B6D82;
+    text-decoration: none;
+    user-select: none;
+}
 
 .present-links {
     color: #6B6D82;
@@ -395,6 +404,7 @@ body {
     margin-right: 36px;
     overflow-y: auto;
     justify-content: center;
+    padding-top: 12px;
 }
 
     #group-left::-webkit-scrollbar {
@@ -454,12 +464,33 @@ body {
 
     .input-style:focus {
         box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
-        
     }
 
-.group-list {
-    vertical-align: middle;
+.fullw{
+    width: 100%;
 }
+
+.group-list {
+    padding-top: 30px;
+    vertical-align: middle;
+    
+}
+.group-item {
+    margin-top: 20px;
+    padding-top: 16px;
+    width: 100%;
+    height: 60px;
+    background: silver;
+    text-align: center;
+    background: #373854;
+    box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+}
+
+    .group-item a {
+        text-decoration: none;
+        color: #FFFFFF;
+    }
 
 .student-button {
     width: 80%;
