@@ -634,7 +634,9 @@ body {
     background: #D66666;
 }
 
-.double-lab {
+/*Надо сделать наложение на нижнию ячейку*/
+.double-lab { 
     background: #D66666;
-    height: calc();
+    height: 280px;
+    z-index: 1;
 }

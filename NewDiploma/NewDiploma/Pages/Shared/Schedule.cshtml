@@ -238,33 +238,6 @@
                     }
                 }
             </tr>
-            <tr>
-                @{
-                    var currentLessons9 = ((IEnumerable<Schedule>)Model).Where(x => x.LessonNumber == 9).ToList();
-                    @for (var i = 1; i <= 6; i++)
-                    {
-                        var currentLesson = currentLessons9.FirstOrDefault(x => x.DayOfWeek == i);
-                        if (currentLesson != null)
-                        {
-                            <td>
-                                <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":currentLesson.Type == 4?"double-lab":"")">
-                                    <span>@currentLesson.Course</span>
-                                    <span>гр. @currentLesson.Group</span>
-                                    <span>ауд. @currentLesson.Room</span>
-                                    <span>@currentLesson.Time.ToString(@"hh\:mm")</span>
-                                </div>
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                <div class="schedule-card-nl"></div>
-                            </td>
-                        }
-
-                    }
-                }
-            </tr>
         </tbody>
     </table>
 </div>
