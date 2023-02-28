@@ -224,7 +224,7 @@ body {
     grid-template-columns: 11% 11% 11% 11% 11% 11% 11% 11%;
 }
 
-#present-item {
+.present-item {
     font-size: 18px;
     text-align: center;
     padding-top: 17px;
@@ -234,45 +234,27 @@ body {
     box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
 }
 
-#present-item-a {
-
-    font-size: 18px;
-    text-align: center;
-    padding-top: 17px;
+.pl-a {
     height: 60px;
     background-color: #373854;
     color: #FFFFFF;
-    border-radius: 40px;
-    box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
 }
 
-#present-item-h {
-    font-size: 18px;
-    text-align: center;
+.pl-h {
     padding-top: 11px;
-    height: 60px;
     background-color: #282945;
-    border-radius: 40px;
     box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
     border: 6px solid #373854;
 }
 
-    #present-item:hover {
+    .present-item:hover {
         color: white;
         background-color: #373854;
     }
-    #present-item-h:hover {
+    .present-item-h:hover {
         color: white;
         background-color: #373854;
     }
-
-.present-links-a {
-    pointer-events: none;
-    cursor: default;
-    color: #6B6D82;
-    text-decoration: none;
-    user-select: none;
-}
 
 .present-links {
     color: #6B6D82;
@@ -501,40 +483,6 @@ body {
 
 /*Schedule*/
 
-/*#nav {
-    background: #282945;
-    align-items: center;
-    display: flex;
-    height: 100%;
-    left: 0px;
-    position: absolute;
-    top: 0px;
-    width: 100px;
-    overflow: hidden;
-    transition: width .2s;
-}*/
-
-/*.group {
-    margin: auto 60px;
-    padding: 36px;
-    background: linear-gradient(0deg, rgba(55, 56, 84, 0.1) 0%, rgba(200, 200, 200, 0) 70.92%), #282945;
-    box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
-    border-radius: 30px;
-    margin-bottom: 36px;
-}*/
-
-/*.group-table {
-    margin: auto 60px;
-    margin-bottom: 36px;
-    background: linear-gradient(0deg, rgba(55, 56, 84, 0.1) 0%, rgba(200, 200, 200, 0) 70.92%), #282945;
-    box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
-    border-radius: 30px;
-    overflow: auto;
-    height: 65%;
-    width: 88%;
-    position: absolute;
-}*/
-
 /*ДОДЕЛАТЬ*/
 .group-table {
     position: absolute;
@@ -596,7 +544,7 @@ body {
 
 .schedule-card {
     font-size: 14px;
-    line-height: 14px;
+    line-height: 100%;
     text-align: center;
     padding-top: 12px;
     padding-bottom: 2px;
@@ -615,7 +563,7 @@ body {
 .schedule-card-nl {
     padding-top: 16px;
     padding-bottom: 2px;
-    height: 100%;
+    height: 140px;
     background-color: #282945;
     border: 2px solid #373854;
     border-radius: 30px;
@@ -635,8 +583,8 @@ body {
 }
 
 /*Надо сделать наложение на нижнию ячейку*/
-.double-lab { 
+.double-lab {
+    
     background: #D66666;
-    height: 280px;
-    z-index: 1;
+    height: calc(140px * 2 + 10px);
 }
