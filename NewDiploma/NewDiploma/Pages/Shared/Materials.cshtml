@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Методички";
 }
 
@@ -8,16 +7,21 @@
 </div>
 
 <div class="groups">
-	<div id="group-left">
-		<div class="group-list">
-			@foreach (var item in @Model)
-			{
-				<a class="student-button" href="#">@item.CourseName</a>
-			}
-		</div>
-	</div>
+    <div id="group-left">
+        <input class="input-style fullw" placeholder="Введите название предмета">
+        <div class="group-list">
+            @foreach (var item in @Model)
+            {
+                <div class="group-item">
+                    <a href="#">
+                        <span>@item.CourseName</span>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
 
-	<div id="group-right">
-		
-	</div>
+    <div id="group-right">
+
+    </div>
 </div>
