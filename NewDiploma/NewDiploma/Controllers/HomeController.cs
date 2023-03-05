@@ -3,6 +3,8 @@ using NewDiploma.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
+using NewDiploma.Data.Identity;
 
 namespace NewDiploma.Controllers
 {
@@ -10,15 +12,18 @@ namespace NewDiploma.Controllers
     {
         private readonly IScheduleService _service;
 
-        public HomeController(IScheduleService service)
+        private readonly UserManager<ApplicationIdentityUser> _usermanager;
+
+        public HomeController(IScheduleService service, UserManager<ApplicationIdentityUser> userManagerService)
         {
             _service = service;
+            _usermanager = userManagerService;
         }
 
         public IActionResult Index()
         {
             var model = _service.GetStudents();
-            
+
             return View(model);
         }
 
@@ -40,7 +45,9 @@ namespace NewDiploma.Controllers
 
         public IActionResult Schedule()
         {
-            var schedule = _service.GetSchedule();
+            var dateNow = DateTime.Now;
+            var user = _usermanager.GetUserAsync(User).Result;
+            var schedule = _service.GetSchedule(dateNow, user);
             return View(schedule);
         }
 

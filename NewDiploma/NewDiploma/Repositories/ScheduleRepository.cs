@@ -32,7 +32,7 @@ namespace NewDiploma.Repositories
             }
         }
 
-        public List<Schedule> GetSchedule()
+        public List<Schedule> GetSchedule(DateTime dateFrom, DateTime dateTo, string userId)
         {
             using (IDbConnection db = Connection)
             {
@@ -48,7 +48,10 @@ namespace NewDiploma.Repositories
                                                     JOIN [Group] ON [group_id] = [GROUP].id
                                                     JOIN [Course] ON [course_id] = [Course].id
                                                     JOIN [User] ON [teacher_id] = [User].id
-                                                    JOIN [Lesson] ON [lesson_id] = [Lesson].id").ToList();
+                                                    JOIN [Lesson] ON [lesson_id] = [Lesson].id
+													WHERE Schedule.[Date] >= @dateFrom
+													AND Schedule.[Date] <= @dateTo 
+													AND [User].[user_guid] = @userId",new {dateFrom = dateFrom, dateTo = dateTo, userId = userId}).ToList();
 
                 return result;
             }

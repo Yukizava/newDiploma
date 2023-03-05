@@ -12,14 +12,26 @@ namespace NewDiploma.Services
             _repository = repository;
         }
 
-        public List<Schedule> GetSchedule()
+        public List<Schedule> GetSchedule(DateTime dateNow, Data.Identity.ApplicationIdentityUser user)
         {
-            var schedule = _repository.GetSchedule();
+            var dayOfWeek = (int)dateNow.DayOfWeek;
+            var dateFrom = dateNow.AddDays(-dayOfWeek + (int)DayOfWeek.Monday);
+            var dateTo = dateNow.AddDays(-dayOfWeek + 7);
+            var userId = user.Id; 
+            if (dayOfWeek == 0)
+            {
+                dateFrom = dateNow.AddDays(-7);
+                dateTo = dateNow;
+            } 
+
+            var schedule = _repository.GetSchedule(dateFrom, dateTo, userId);
 
             foreach (var item in schedule)
             {
                 item.DayOfWeek = (int)item.Date.DayOfWeek;
             }
+
+
 
             return schedule;
         }
