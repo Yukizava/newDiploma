@@ -483,6 +483,19 @@ body {
 
 /*Schedule*/
 
+.sc-left{
+    float: left;
+}
+
+.sc-center {
+
+}
+
+.sc-right {
+    float: right;
+}
+
+
 /*дндекюрэ*/
 .group-table {
     position: absolute;
