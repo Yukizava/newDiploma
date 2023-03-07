@@ -43,17 +43,22 @@ namespace NewDiploma.Controllers
             return View();
         }
 
-        public IActionResult Schedule()
+        public IActionResult Schedule([FromQuery]string date)
         {
             var dateNow = DateTime.Now;
+            if (date != null)
+            {
+                dateNow = DateTime.Parse(date);
+            }
             var user = _usermanager.GetUserAsync(User).Result;
             var schedule = _service.GetSchedule(dateNow, user);
+            
             return View(schedule);
         }
 
-        public IActionResult Presents()
+        public IActionResult Presents([FromQuery]int lesson)
         {
-            var present = _service.GetPresents();
+            var present = _service.GetPresents(lesson);
             return View(present);
         }
 

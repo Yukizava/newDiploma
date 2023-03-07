@@ -5,9 +5,13 @@
 }
 
 <div class="group">
-    <button name="button" class="sc-left">Прошлая неделя</button>
-    <span class="sc-center">123</span>
-    <button name="button" class="sc-right">Следующая неделя</button>
+    @{
+        var dateTimeNow = DateTime.Now;
+        <button name="button" class="sc-left" onclick="location.href='@Url.Action("Schedule", "Home", new{date = DateTime.Now.AddDays(-7).ToString(@"dd.MM.yyyy")})'">Прошлая неделя</button>
+        <span class="sc-center">@*@dateFrom - @dateTo*@ 06.03.23 - 12.03.23</span>
+        <button name="button" class="sc-right" onclick="location.href='@Url.Action("Schedule", "Home", new{date = DateTime.Now.AddDays(7).ToString(@"dd.MM.yyyy")})'">Следующая неделя</button>
+        <button name="button" class="sc-right" onclick="location.href='@Url.Action("Schedule", "Home", new{date = DateTime.Now.AddDays(0).ToString(@"dd.MM.yyyy")})'">Тест</button>
+    }
 </div>
 
 <div class="group-table">

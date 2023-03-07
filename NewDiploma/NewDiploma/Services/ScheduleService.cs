@@ -46,9 +46,10 @@ namespace NewDiploma.Services
 			return _repository.GetMaterials();
 		}
 
-        public List<Present> GetPresents()
+        public List<Present> GetPresents(int lesson)
         {
-            return _repository.GetPresents();
+            var date = DateTime.Now.Date;
+            return _repository.GetPresents(lesson, date);
         }
 
     }

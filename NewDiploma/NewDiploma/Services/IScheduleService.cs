@@ -8,6 +8,6 @@ namespace NewDiploma.Services
         List<Schedule> GetSchedule(DateTime dateNow, Data.Identity.ApplicationIdentityUser user);
         List<Material> GetMaterials();
 
-        List<Present> GetPresents();
+        List<Present> GetPresents(int lesson);
     }
 }

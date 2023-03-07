@@ -7,7 +7,7 @@ namespace NewDiploma.Repositories
         List<Schedule> GetSchedule(DateTime dateFrom, DateTime dateTo, string userId);
         List<Student> GetStudents();
         List<Material> GetMaterials();
-        List<Present> GetPresents();
+        List<Present> GetPresents(int lesson, DateTime date);
         
     }
 }

@@ -2,6 +2,7 @@
 using System.Data;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using NewDiploma.Services;
 
 namespace NewDiploma.Repositories
 {
@@ -66,14 +67,17 @@ namespace NewDiploma.Repositories
                 return result;
             }
         }
-        public List<Present> GetPresents()
+        public List<Present> GetPresents(int lesson, DateTime date)
         {
             using (IDbConnection db = Connection)
             {
-                var result = db.Query<Present>(@"   SELECT [User].[avatar_id] as 'Avatar', [User].[FIO] as 'FIO', [Group].name as 'Group'
-                                                    FROM [StudentGroup]
-                                                    JOIN [User] ON [user_id] = [USER].id 
-                                                    JOIN [Group] ON [group_id] = [GROUP].id").ToList();
+                var result = db.Query<Present>(@"   SELECT Schedule.[date], Schedule.[lesson_id], [ScheduleStudent].[student_id],[User].[avatar_id] as 'Avatar', [User].[FIO] as 'FIO', [Group].name as 'Group'
+                                                    FROM [Schedule]
+                                                    JOIN [Group] ON [Schedule].group_id = [GROUP].id
+                                                    JOIN [StudentGroup] ON [Group].id = [StudentGroup].[group_id]
+                                                    JOIN [User] ON [StudentGroup].[user_id] = [User].[id]
+                                                    LEFT JOIN [ScheduleStudent] ON [StudentGroup].[user_id] = [ScheduleStudent].[student_id] AND [ScheduleStudent].[schedule_id] = [Schedule].[id]
+                                                    WHERE [Schedule].[date] = @date AND [Schedule].[lesson_id] = @lesson", new { lesson = lesson, date = date }).ToList();
 
                 return result;
             }
