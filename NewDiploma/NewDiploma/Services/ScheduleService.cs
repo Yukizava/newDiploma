@@ -46,10 +46,14 @@ namespace NewDiploma.Services
 			return _repository.GetMaterials();
 		}
 
-        public List<Present> GetPresents(int lesson)
+        public List<Present> GetPresents(int lesson, Data.Identity.ApplicationIdentityUser user)
         {
             var date = DateTime.Now.Date;
-            return _repository.GetPresents(lesson, date);
+            var userId = user.Id;
+
+            var presents = _repository.GetPresents(lesson, date, userId);
+
+            return presents;
         }
 
     }

@@ -58,7 +58,8 @@ namespace NewDiploma.Controllers
 
         public IActionResult Presents([FromQuery]int lesson)
         {
-            var present = _service.GetPresents(lesson);
+            var user = _usermanager.GetUserAsync(User).Result; 
+            var present = _service.GetPresents(lesson, user);
             return View(present);
         }
 
