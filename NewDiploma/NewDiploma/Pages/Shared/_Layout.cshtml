@@ -1,106 +1,151 @@
 ﻿@using NewDiploma.Data.Identity;
 @inject SignInManager<ApplicationIdentityUser> SignInManager
 @inject UserManager<ApplicationIdentityUser> UserManager
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>@ViewData["Title"] / МОЙ РГРТУ</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] / My RSREU</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/NewDiploma.styles.css" asp-append-version="true" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     @if (SignInManager.IsSignedIn(User))
     {
-        <header>
-            <div id="header-items">
-                <span id="date"></span>
-                <div id="header-item">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Settings">
-                        <img src="~/img/svg/Settings.svg">
-                    </a>
-                </div>
-            </div>
-        </header>
-    }
-    <div>
-        <main role="main">
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <div id="nav">
-                    <div id="nav-items">
-                        <div class="nav-main-item">
-                            <div class="nav-line">
-                                <div class="nav-item">
-                                    <img src="~/img/pic/test.png" draggable="false" />
-                                </div>
-                                <span id="nav-main-span">@UserManager.GetUserAsync(User).Result.Name</span>
-                            </div>
-                        </div>
-                        <a class="nav-links" asp-area="" asp-controller="Home" asp-action="Schedule">
-                            <div class="nav-line">
-                                <div class="nav-item">
-                                    <img src="~/img/svg/Calendar.svg" draggable="false">
-                                </div>
-                                <span>Расписание</span>
-                            </div>
-                        </a>
-                        <a class="nav-links" asp-area="" asp-controller="Home" asp-action="Presents">
-                            <div class="nav-line">
-                                <div class="nav-item">
-                                    <img src="~/img/svg/Couples.svg" draggable="false">
-                                </div>
-                                <span>Присутствующие</span>
-                            </div>
-                        </a>
-                        <a class="nav-links" asp-area="" asp-controller="Home" asp-action="Students">
-                            <div class="nav-line">
-                                <div class="nav-item">
-                                    <img src="~/img/svg/Groups.svg" draggable="false">
-                                </div>
-                                <span>Студенты</span>
-                            </div>
-                        </a>
-                        <a class="nav-links" asp-area="" asp-controller="Home" asp-action="GroupsPage">
-                            <div class="nav-line">
-                                <div class="nav-item">
-                                    <img src="~/img/svg/Couples.svg" draggable="false">
-                                </div>
-                                <span>Посещаемость</span>
-                            </div>
-                        </a>
-                        <a class="nav-links" asp-area="" asp-controller="Home" asp-action="Materials">
-                            <div class="nav-line">
-                                <div class="nav-item">
-                                    <img src="~/img/svg/Materials.svg" draggable="false">
-                                </div>
-                                <span>Методички</span>
-                            </div>
-                        </a>
-                        <a class="nav-links" asp-area="" asp-controller="Home" asp-action="Notification">
-                            <div class="nav-line">
-                                <div class="nav-item">
-                                    <img src="~/img/svg/Notification.svg" draggable="false">
-                                </div>
-                                <span>Объявления</span>
-                            </div>
-                        </a>
+        <nav class="sidebar close">
+            <header>
+                <div class="image-text">
+                    <span class="image ">
+                        <img src="~/img/pic/ava.jpg" draggable="false" />
+                    </span>
+
+                    <div class="text logo-text">
+                        <span class="name nav-span">@UserManager.GetUserAsync(User).Result.Name</span>
+                        @*<span class="profession">Пользователь</span>*@
                     </div>
                 </div>
-                <div class="render-body">
-                    @RenderBody()
+
+                <i class='bx bx-chevron-right toggle'></i>
+            </header>
+
+            <div class="menu-bar">
+                <div class="menu">
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a asp-area="" asp-controller="Home" asp-action="Schedule">
+                                <i class='bx bx-calendar icon'></i>
+                                <span class="text nav-text">Расписание</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a asp-area="" asp-controller="Home" asp-action="Presents">
+                                <i class='bx bx-user-circle icon'></i>
+                                <span class="text nav-text">Присутствующие</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a asp-area="" asp-controller="Home" asp-action="Students">
+                                <i class='bx bx-group icon'></i>
+                                <span class="text nav-text">Студенты</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a asp-area="" asp-controller="Home" asp-action="GroupsPage">
+                                <i class='bx bx-pie-chart-alt icon'></i>
+                                <span class="text nav-text">Посещаемость</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a asp-area="" asp-controller="Home" asp-action="Materials">
+                                <i class='bx bx-book icon'></i>
+                                <span class="text nav-text">Методички</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a asp-area="" asp-controller="Home" asp-action="Notification">
+                                <i class='bx bx-bell icon'></i>
+                                <span class="text nav-text">Объявления</span>
+                            </a>
+                        </li>
+
+                    </ul>
                 </div>
-            }
-            else
-            {
-                <div class="">
-                    @RenderBody()
+
+                <div class="bottom-content">
+                    <li class="">
+                        <a asp-area="Identity" asp-page="/Account/Manage/Index">
+                            <i class='bx bx-cog icon'></i>
+                            <span class="text nav-text">Настройки</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a asp-area="Identity" asp-page="/Account/Logout">
+                            <i class='bx bx-exit icon'></i>
+                            <span class="text nav-text">Выйти</span>
+                        </a>
+                    </li>
+
+                    <li class="mode">
+                        <div class="sun-moon">
+                            <i class='bx bx-sun icon sun'></i>
+                            <i class='bx bx-moon icon moon'></i>
+                        </div>
+                        <span class="mode-text text">Тёмная тема</span>
+
+                        <div class="toggle-switch">
+                            <span class="switch"></span>
+                        </div>
+                    </li>
+
                 </div>
+            </div>
+
+        </nav>
+    }
+
+    <section class="home">
+
+        <div class="text">
+            <h3>@ViewData["Title"]</h3>
+            <span id="date"></span>
+            @RenderBody()
+        </div>
+    </section>
+
+    <script>
+
+        const body = document.querySelector('body'),
+            sidebar = body.querySelector('nav'),
+            toggle = body.querySelector(".toggle"),
+            modeSwitch = body.querySelector(".toggle-switch"),
+            modeText = body.querySelector(".mode-text");
+
+
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        })
+
+        modeSwitch.addEventListener("click", () => {
+            body.classList.toggle("dark");
+
+            if (body.classList.contains("dark")) {
+                modeText.innerText = "Светлая тема";
+            } else {
+                modeText.innerText = "Тёмная тема";
+
             }
-        </main>
-    </div>
+        }
+        );
+    </script>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/moment/moment-with-locales.js"></script>

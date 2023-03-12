@@ -5,7 +5,7 @@ namespace NewDiploma.Repositories
     public interface IScheduleRepository
     {
         List<Schedule> GetSchedule(DateTime dateFrom, DateTime dateTo, string userId);
-        List<Student> GetStudents();
+        List<Student> GetStudents(string groupName);
         List<Material> GetMaterials();
         List<Present> GetPresents(int lesson, DateTime date, string userId);
         

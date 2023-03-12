@@ -16,12 +16,12 @@
 
   <ItemGroup>
     <None Include="Pages\Shared\GroupsPage.cshtml" />
-    <None Include="Pages\Shared\Index.cshtml" />
+    <None Include="Pages\Home\Index.cshtml" />
     <None Include="Pages\Shared\Materials.cshtml" />
     <None Include="Pages\Shared\Notification.cshtml" />
     <None Include="Pages\Shared\Presents.cshtml" />
-    <None Include="Pages\Shared\Privacy.cshtml" />
-    <None Include="Pages\Shared\Profile.cshtml" />
+    <None Include="Pages\Home\Privacy.cshtml" />
+    <None Include="Pages\Home\Profile.cshtml" />
     <None Include="Pages\Shared\Schedule.cshtml" />
     <None Include="Pages\Shared\Settings.cshtml" />
     <None Include="Pages\Shared\Students.cshtml" />
@@ -81,7 +81,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Home\" />
     <Folder Include="Views\" />
   </ItemGroup>
 

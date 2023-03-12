@@ -31,14 +31,12 @@ namespace NewDiploma.Services
                 item.DayOfWeek = (int)item.Date.DayOfWeek;
             }
 
-
-
             return schedule;
         }
 
-        public List<Student> GetStudents()
+        public List<Student> GetStudents(string groupName)
         {
-            return _repository.GetStudents();   
+            return _repository.GetStudents(groupName);   
         }
 
 		public List<Material> GetMaterials()

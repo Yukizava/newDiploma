@@ -1,25 +1,23 @@
 ﻿@{
     ViewData["Title"] = "Студенты";
 }
-<div class="group">
-    <h1>@ViewData["Title"]</h1>
-</div>
 <div class="groups">
-    <div id="group-left">
-        <input class="input-style fullw" placeholder="Введите номер группы">
+    <div class="group-left">
+        
         <div class="group-list">
+            <input class="input-style" placeholder="Введите номер группы">
             @foreach (var item in @Model)
             {
-                <div class="group-item">
-                    <a href="#">
-                            <span>@item.GroupName</span>
-                    </a>
-                </div> 
-            }          
+                <a class="group-action" href="@Url.Action("Students", "Home", new{groupName = @item.GroupName})">
+                    <div class="group-item">
+                        <span>@item.GroupName</span>
+                    </div>
+                </a>
+            }
         </div>
     </div>
 
-    <div id="group-right">
+    <div class="group-right">
         <table class="student-table">
             <thead>
                 <tr>
@@ -36,7 +34,6 @@
                         <td>@item.GroupName</td>
                         <td>@item.StartYear</td>
                     </tr>
-
                 }
             </tbody>
         </table>

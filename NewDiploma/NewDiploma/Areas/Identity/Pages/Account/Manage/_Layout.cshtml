@@ -11,15 +11,17 @@
 
 
 
-<div>
-    <div class="group">
-        <h1>Manage your account</h1>
-    </div>
-    <div class="groups">
-        <div id="group-left">
+<div class="groups">
+    <div class="group-left">
+
+        <div class="group-list">
+            <h3>Управление учетной записью</h3>
             <partial name="_ManageNav" />
         </div>
-        <div id="group-right">
+
+    </div>
+    <div class="group-right">
+        <div class="group-list">
             @RenderBody()
         </div>
     </div>

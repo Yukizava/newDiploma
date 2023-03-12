@@ -2,20 +2,33 @@
 @{
     ViewData["Title"] = "Посещаемость";
 }
-
-<div class="group">
-    <h1>@ViewData["Title"]</h1>
-</div>
-
 <div class="groups">
-	<div id="group-left">
-		
-		<div class="group-list">
+    <div class="group-left">
 
-		</div>
-	</div>
+        <div class="group-list">
+            <input class="input-style" placeholder="Введите номер группы">
+            
+                <a class="group-action" href="#">
+                    <div class="group-item">
+                        <span></span>
+                    </div>
+                </a>
 
-	<div id="group-right">
+        </div>
+    </div>
 
-	</div>
+    <div class="group-right">
+        <table class="student-table">
+            <thead>
+                <tr>
+                    <th>Предмет</th>
+                    <th>Фамилия Имя Отчество</th>
+                    <th>Посещаемость</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
 </div>

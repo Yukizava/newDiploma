@@ -22,9 +22,9 @@ namespace NewDiploma.Controllers
 
         public IActionResult Index()
         {
-            var model = _service.GetStudents();
+            
 
-            return View(model);
+            return View();
         }
 
         [Authorize]
@@ -59,15 +59,15 @@ namespace NewDiploma.Controllers
         public IActionResult Presents([FromQuery]int lesson)
         {
             var user = _usermanager.GetUserAsync(User).Result; 
-            var present = _service.GetPresents(lesson, user);
-            return View(present);
+            var presents = _service.GetPresents(lesson, user);
+            return View(presents);
         }
 
-        public IActionResult Students()
+        public IActionResult Students([FromQuery] string groupName)
         {
-            var students = _service.GetStudents();
-            return View(students);
 
+            var students = _service.GetStudents(groupName);
+            return View(students);
         }
 
         public IActionResult GroupsPage()

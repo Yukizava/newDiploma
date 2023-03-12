@@ -4,7 +4,7 @@ namespace NewDiploma.Services
 {
     public interface IScheduleService
     {
-        List<Student> GetStudents();
+        List<Student> GetStudents(string groupName);
         List<Schedule> GetSchedule(DateTime dateNow, Data.Identity.ApplicationIdentityUser user);
         List<Material> GetMaterials();
 

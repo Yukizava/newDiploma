@@ -20,14 +20,15 @@ namespace NewDiploma.Repositories
                 return new SqlConnection(_config.GetConnectionString("DiplomaContext"));
             }
         }
-        public List<Student> GetStudents()
+        public List<Student> GetStudents(string groupName)
         {
             using (IDbConnection db = Connection)
             {
-                var result = db.Query<Student>(@"   SELECT FIO, [GROUP].name as 'GroupName', [GROUP].start_year as 'StartYear'
+                var result = db.Query<Student>(@"   SELECT FIO, [GROUP].[name] as 'GroupName', [GROUP].start_year as 'StartYear'
                                                     FROM StudentGroup 
                                                     JOIN [User] ON [user_id] = [USER].id 
-                                                    JOIN [Group] ON [group_id] = [GROUP].id").ToList();
+                                                    JOIN [Group] ON [group_id] = [GROUP].id
+													WHERE [Group].[name] = @groupName",new {groupName = groupName }).ToList();
 
                 return result;
             }
@@ -71,8 +72,9 @@ namespace NewDiploma.Repositories
         {
             using (IDbConnection db = Connection)
             {
-                var result = db.Query<Present>(@"   SELECT Schedule.[date], Schedule.[lesson_id], [ScheduleStudent].[student_id],[User].[avatar_id] as 'Avatar', [User].[FIO] as 'FIO', [Group].name as 'Group', [User].[user_guid], [Schedule].teacher_id, Teacher_User.user_guid
+                var result = db.Query<Present>(@"   SELECT Schedule.[date], Schedule.[lesson_id], Course.[name] as 'CourseName', [ScheduleStudent].[student_id],[User].[avatar_id] as 'Avatar', [User].[FIO] as 'FIO', [Group].name as 'Group', [User].[user_guid], [Schedule].teacher_id, Teacher_User.user_guid
                                                     FROM [Schedule]
+                                                    JOIN [Course] ON [course_id] = [Course].id
                                                     JOIN [Group] ON [Schedule].group_id = [GROUP].id
                                                     JOIN [StudentGroup] ON [Group].id = [StudentGroup].[group_id]
                                                     JOIN [User] ON [StudentGroup].[user_id] = [User].[id]

@@ -1,7 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Присутствующие";
 }
-
 <div class="present-main">
     <div id="present-items">
         <a class="present-links" href="@Url.Action("Presents", "Home", new{lesson = 1})">
@@ -46,79 +45,80 @@
         </a>
     </div>
 </div>
-
-<div class="group">
-    <div class="present-groups">
-        <div class="present-left">
-                <span id="nc">АКиТП</span>
+@if (((List<Present>)Model).Count > 0)
+{
+    <div class="groups">
+        <div class="group-present">
+            <div class="group-present-left">
+                <span id="nc">@Model.CourseName</span>
                 <br />
-                <span id="nc">946</span>
+                <span id="nc">@Model.Group</span>
                 <br />
                 <input class="input-style" placeholder="Введите тему занятия">
-        </div>
-        <div class="present-right">
-            <div class="present-center">
-                <div id="present-elements">
+            </div>
+            <div class="group-present-right">
+                <div class="present-elements">
                     <a href="#">
                         <div class="present-element">
-                            <img src="~/img/svg/Accept.svg" draggable="false">
+                            <i class='bx bx-check icon'></i>
+                            <span>Сохранить</span>
                         </div>
-                        <span>Сохранить</span>
                     </a>
                     <a href="#">
                         <div class="present-element">
-                            <img src="~/img/svg/Cancel.svg" draggable="false">
+                            <i class='bx bx-x icon'></i>
+                            <span>Отмена</span>
                         </div>
-                        <span>Отмена</span>
                     </a>
                     <a href="#">
                         <div class="present-element">
-                            <img src="~/img/svg/Upload.svg" draggable="false">
+                            <i class='bx bx-import icon'></i>
+                            <span>Отправить материал</span>
                         </div>
-                        <span>Отправить материал</span>
                     </a>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="group">
-    <div class="students-present">
-        <table class="students-table">
-            <tbody>
-                <tr>
-                    <td></td>
-                    <th>Фамилия Имя Отчество</th>
-                    <th>Посещаемость</th>
-                    <th>Статус</th>
-                    <th>Выполнение</th>
-                </tr>
-                @foreach (var item in @Model)
-                {
+    <div class="groups">
+        <div class="group-present">
+            <table class="present-table">
+                <tbody>
                     <tr>
-                        <td><img src="~/img/pic/test.png" draggable="false" /></td>
-                        <td><span id="pn">@item.FIO</span></td>
-                        <td><span>99%</span></td>
-                        <td>
-                            <select id="student-status">
-                                <option value="" selected>Отсутсвует</option>
-                                <option value="">Опоздал</option>
-                                <option value="">Присутствует</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select id="student-pass">
-                                <option value="" selected>-</option>
-                                <option value="">Нет</option>
-                                <option value="">Выполнено</option>
-                                <option value="">Защита</option>
-                            </select>
-                        </td>
+                        <td></td>
+                        <th>Фамилия Имя Отчество</th>
+                        <th>Посещаемость</th>
+                        <th>Статус</th>
+                        <th>Выполнение</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                    @foreach (var item in @Model)
+                    {
+                        <tr>
+                            <td><img src="~/img/pic/test.png" draggable="false" /></td>
+                            <td><span id="pn">@item.FIO</span></td>
+                            <td><span>99%</span></td>
+                            <td>
+                                <select id="student-status">
+                                    <option value="" selected>Отсутсвует</option>
+                                    <option value="">Опоздал</option>
+                                    <option value="">Присутствует</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select id="student-pass">
+                                    <option value="" selected>-</option>
+                                    <option value="">Нет</option>
+                                    <option value="">Выполнено</option>
+                                    <option value="">Защита</option>
+                                </select>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
+}
 
-</div>
+

@@ -3,25 +3,26 @@
 }
 
 <div class="group">
-    <h1>@ViewData["Title"]</h1>
 </div>
 
 <div class="groups">
-    <div id="group-left">
-        <input class="input-style fullw" placeholder="Введите название предмета">
+
+    <div class="group-left">
         <div class="group-list">
+            <input class="input-style fullw" placeholder="Введите название предмета">
             @foreach (var item in @Model)
             {
-                <div class="group-item">
-                    <a href="#">
+                <a class="group-action" href="#">
+                    <div class="group-item">
+
                         <span>@item.CourseName</span>
-                    </a>
-                </div>
+
+                    </div>
+                </a>
             }
         </div>
     </div>
 
-    <div id="group-right">
-
+    <div class="group-right">
     </div>
 </div>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Андрей\\Documents\\newDiploma\\NewDiploma\\NewDiploma\\NewDiploma.csproj": {}
+    "C:\\Users\\Андрей\\source\\repos\\newnewDiploma\\NewDiploma\\NewDiploma\\NewDiploma.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Андрей\\Documents\\newDiploma\\NewDiploma\\NewDiploma\\NewDiploma.csproj": {
+    "C:\\Users\\Андрей\\source\\repos\\newnewDiploma\\NewDiploma\\NewDiploma\\NewDiploma.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Андрей\\Documents\\newDiploma\\NewDiploma\\NewDiploma\\NewDiploma.csproj",
+        "projectUniqueName": "C:\\Users\\Андрей\\source\\repos\\newnewDiploma\\NewDiploma\\NewDiploma\\NewDiploma.csproj",
         "projectName": "NewDiploma",
-        "projectPath": "C:\\Users\\Андрей\\Documents\\newDiploma\\NewDiploma\\NewDiploma\\NewDiploma.csproj",
+        "projectPath": "C:\\Users\\Андрей\\source\\repos\\newnewDiploma\\NewDiploma\\NewDiploma\\NewDiploma.csproj",
         "packagesPath": "C:\\Users\\Андрей\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Андрей\\Documents\\newDiploma\\NewDiploma\\NewDiploma\\obj\\",
+        "outputPath": "C:\\Users\\Андрей\\source\\repos\\newnewDiploma\\NewDiploma\\NewDiploma\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Андрей\\AppData\\Roaming\\NuGet\\NuGet.Config",

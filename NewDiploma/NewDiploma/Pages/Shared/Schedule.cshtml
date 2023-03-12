@@ -3,18 +3,19 @@
 @{
     ViewData["Title"] = "Расписание";
 }
-
-<div class="group">
-    <span class="sc-center">@*@dateFrom - @dateTo*@ 06.03.23 - 12.03.23</span>
-    <button name="button" class="sc-right" onclick="location.href='@Url.Action("Schedule", "Home", new{date = DateTime.Now.AddDays(7).ToString(@"dd.MM.yyyy")})'">Следующая неделя</button>
-    <button name="button" class="sc-right" onclick="location.href='@Url.Action("Schedule", "Home", new{date = DateTime.Now.AddDays(0).ToString(@"dd.MM.yyyy")})'">Текущая неделя</button>
-    <button name="button" class="sc-right" onclick="location.href='@Url.Action("Schedule", "Home", new{date = DateTime.Now.AddDays(-7).ToString(@"dd.MM.yyyy")})'">Прошлая неделя</button>
+<div class="groups">
+    <div class="schedule-group">
+        <button name="button" onclick="location.href='@Url.Action("Schedule", "Home", new{date = DateTime.Now.AddDays(-7).ToString(@"dd.MM.yyyy")})'">Прошлая неделя</button>
+        <button name="button" onclick="location.href='@Url.Action("Schedule", "Home", new{date = DateTime.Now.AddDays(0).ToString(@"dd.MM.yyyy")})'">Текущая неделя</button>
+        <button name="button" onclick="location.href='@Url.Action("Schedule", "Home", new{date = DateTime.Now.AddDays(7).ToString(@"dd.MM.yyyy")})'">Следующая неделя</button>
+    </div>
 </div>
 
-<div class="group-table">
+<div class="groups">
     <table class="schedule-table">
         <thead>
             <tr>
+                <th></th>
                 <th>Понедельник</th>
                 <th>Вторник</th>
                 <th>Среда</th>
@@ -25,11 +26,16 @@
         </thead>
         <tbody>
             @{
+                string[] time = {"8:10-9:45", "9:55-11:30", "11:40-13:15", "13:35-15:10", "15:20-16:55", "17:05-18:40", "18:50-20:15", "20:25-21:50" };
                 var doubleLabIndexes = new List<int>();
                 @for (var i = 1; i <= 8; i++)
                 {
                     var currentLessons = ((IEnumerable<Schedule>)Model).Where(x => x.LessonNumber == i).ToList();
+                    string x = time[i-1];
                     <tr>
+                        <td class="schedule-date">
+                            <span>@x</span>
+                        </td>
                         @for (var j = 1; j <= 6; j++)
                         {
                             if (doubleLabIndexes.Contains(j))
@@ -44,7 +50,7 @@
                                 {
                                     doubleLabIndexes.Add(j);
                                 }
-                                <td @(currentLesson.Type == 4?"rowspan=2":"")>
+                                <td class="schedule-cell" @(currentLesson.Type == 4?"rowspan=2":"")>
                                     <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":currentLesson.Type == 4?"double-lab":"")">
                                         <span>@currentLesson.Course</span>
                                         <span>гр. @currentLesson.Group</span>
@@ -55,9 +61,8 @@
                             }
                             else
                             {
-                                <td>
-                                    <div class="schedule-card-nl">
-                                    </div>
+                                <td class="schedule-cell">
+                                    <div class="schedule-card-nl"></div>
                                 </td>
                             }
                         }
