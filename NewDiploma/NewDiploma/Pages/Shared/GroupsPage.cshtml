@@ -1,34 +1,66 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Посещаемость";
 }
 <div class="groups">
     <div class="group-left">
-
-        <div class="group-list">
-            <input class="input-style" placeholder="Введите номер группы">
-            
-                <a class="group-action" href="#">
-                    <div class="group-item">
-                        <span></span>
-                    </div>
-                </a>
-
+        <div class="group-list-100">
+            <div class="group-list-50">
+                <div class="group-search">
+                    <input class="input-style" placeholder="Введите номер группы">
+                </div>
+                <div class="group-list">
+                    @foreach (var item in @Model.Groups)
+                    {
+                        <a class="group-action" href="@Url.Action("GroupsPage", "Home", new{groupName = @item.GroupName})">
+                            <div class="group-item">
+                                <span>@item.GroupName</span>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>
+            <div class="group-list-50">
+                <div class="group-search">
+                    <input class="input-style" placeholder="Введите название предмета">
+                </div>
+                <div class="group-list">
+                    @foreach (var item in @Model.Courses)
+                    {
+                        <a class="group-action" href="@Url.Action("GroupsPage", "Home", new{courseName = @item.CourseName})">
+                            <div class="group-item">
+                                <span>@item.CourseName</span>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>
         </div>
     </div>
 
+
     <div class="group-right">
-        <table class="student-table">
-            <thead>
-                <tr>
-                    <th>Предмет</th>
-                    <th>Фамилия Имя Отчество</th>
-                    <th>Посещаемость</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-            </tbody>
-        </table>
+        <div class="group-table">
+            <table class="student-table">
+                <thead>
+                    <tr>
+                        <th>Предмет</th>
+                        <th>Тип</th>
+                        <th>Фамилия Имя Отчество</th>
+                        <th>Посещаемость</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in @Model.Attendances)
+                    {
+                        <tr>
+                            <td>@item.CourseName</td>
+                            <td>Лекция</td>
+                            <td>@item.FIO</td>
+                            <td>99%</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

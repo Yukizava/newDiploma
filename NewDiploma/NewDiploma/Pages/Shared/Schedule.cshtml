@@ -12,64 +12,66 @@
 </div>
 
 <div class="groups">
-    <table class="schedule-table">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Понедельник</th>
-                <th>Вторник</th>
-                <th>Среда</th>
-                <th>Четверг</th>
-                <th>Пятница</th>
-                <th>Суббота</th>
-            </tr>
-        </thead>
-        <tbody>
-            @{
-                string[] time = {"8:10-9:45", "9:55-11:30", "11:40-13:15", "13:35-15:10", "15:20-16:55", "17:05-18:40", "18:50-20:15", "20:25-21:50" };
-                var doubleLabIndexes = new List<int>();
-                @for (var i = 1; i <= 8; i++)
-                {
-                    var currentLessons = ((IEnumerable<Schedule>)Model).Where(x => x.LessonNumber == i).ToList();
-                    string x = time[i-1];
-                    <tr>
-                        <td class="schedule-date">
-                            <span>@x</span>
-                        </td>
-                        @for (var j = 1; j <= 6; j++)
-                        {
-                            if (doubleLabIndexes.Contains(j))
+    <div class="group-overflow">
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Понедельник</th>
+                    <th>Вторник</th>
+                    <th>Среда</th>
+                    <th>Четверг</th>
+                    <th>Пятница</th>
+                    <th>Суббота</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    string[] time = { "8:10-9:45", "9:55-11:30", "11:40-13:15", "13:35-15:10", "15:20-16:55", "17:05-18:40", "18:50-20:15", "20:25-21:50" };
+                    var doubleLabIndexes = new List<int>();
+                    @for (var i = 1; i <= 8; i++)
+                    {
+                        var currentLessons = ((IEnumerable<Schedule>)Model).Where(x => x.LessonNumber == i).ToList();
+                        string timeFrame = time[i - 1];
+                        <tr>
+                            <td class="schedule-date">
+                                <span>@timeFrame</span>
+                            </td>
+                            @for (var j = 1; j <= 6; j++)
                             {
-                                doubleLabIndexes.Remove(j);
-                                continue;
-                            }
-                            var currentLesson = currentLessons.FirstOrDefault(x => x.DayOfWeek == j);
-                            if (currentLesson != null)
-                            {
-                                if (currentLesson.Type == 4)
+                                if (doubleLabIndexes.Contains(j))
                                 {
-                                    doubleLabIndexes.Add(j);
+                                    doubleLabIndexes.Remove(j);
+                                    continue;
                                 }
-                                <td class="schedule-cell" @(currentLesson.Type == 4?"rowspan=2":"")>
-                                    <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":currentLesson.Type == 4?"double-lab":"")">
-                                        <span>@currentLesson.Course</span>
-                                        <span>гр. @currentLesson.Group</span>
-                                        <span>ауд. @currentLesson.Room</span>
-                                        <span>@currentLesson.Time.ToString(@"hh\:mm")</span>
-                                    </div>
-                                </td>
+                                var currentLesson = currentLessons.FirstOrDefault(x => x.DayOfWeek == j);
+                                if (currentLesson != null)
+                                {
+                                    if (currentLesson.Type == 4)
+                                    {
+                                        doubleLabIndexes.Add(j);
+                                    }
+                                    <td class="schedule-cell" @(currentLesson.Type == 4?"rowspan=2":"")>
+                                        <div class="schedule-card @(currentLesson.Type == 1?"lesson":currentLesson.Type == 2?"practice":currentLesson.Type == 3?"lab":currentLesson.Type == 4?"double-lab":"")">
+                                            <span>@currentLesson.Course</span>
+                                            <span>гр. @currentLesson.Group</span>
+                                            <span>ауд. @currentLesson.Room</span>
+                                            <span>@timeFrame</span>
+                                        </div>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="schedule-cell">
+                                        <div class="schedule-card-nl"></div>
+                                    </td>
+                                }
                             }
-                            else
-                            {
-                                <td class="schedule-cell">
-                                    <div class="schedule-card-nl"></div>
-                                </td>
-                            }
-                        }
-                    </tr>
+                        </tr>
+                    }
                 }
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
 

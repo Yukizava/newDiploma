@@ -8,21 +8,21 @@
 <div class="groups">
 
     <div class="group-left">
+        <div class="group-search">
+            <input class="input-style" placeholder="Введите название предмета">
+        </div>
         <div class="group-list">
-            <input class="input-style fullw" placeholder="Введите название предмета">
             @foreach (var item in @Model)
             {
-                <a class="group-action" href="#">
+                <a class="group-action" href="@Url.Action("Materials", "Home", new{courseName = @item.CourseName})">
                     <div class="group-item">
-
                         <span>@item.CourseName</span>
-
                     </div>
                 </a>
             }
         </div>
     </div>
-
     <div class="group-right">
+        <span>Hello world!</span>
     </div>
 </div>

@@ -6,8 +6,10 @@ namespace NewDiploma.Services
     {
         List<Student> GetStudents(string groupName);
         List<Schedule> GetSchedule(DateTime dateNow, Data.Identity.ApplicationIdentityUser user);
-        List<Material> GetMaterials();
+        List<Material> GetCourses();
 
         List<Present> GetPresents(int lesson, Data.Identity.ApplicationIdentityUser user);
+        List<Group> GetGroups();
+        List<StudentAttendance> GetStudentAttendances(string groupName, string courseName);
     }
 }

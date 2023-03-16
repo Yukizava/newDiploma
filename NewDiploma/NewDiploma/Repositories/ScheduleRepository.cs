@@ -28,7 +28,18 @@ namespace NewDiploma.Repositories
                                                     FROM StudentGroup 
                                                     JOIN [User] ON [user_id] = [USER].id 
                                                     JOIN [Group] ON [group_id] = [GROUP].id
-													WHERE [Group].[name] = @groupName",new {groupName = groupName }).ToList();
+													WHERE [Group].[name] = @groupName", new { groupName = groupName }).ToList();
+
+                return result;
+            }
+        }
+
+        public List<Group> GetGroups()
+        {
+            using (IDbConnection db = Connection)
+            {
+                var result = db.Query<Group>(@"SELECT [GROUP].[name] as 'GroupName', [GROUP].start_year as 'StartYear', [GROUP].id as 'Id'
+                                                    FROM [Group] ").ToList();
 
                 return result;
             }
@@ -53,12 +64,12 @@ namespace NewDiploma.Repositories
                                                     JOIN [Lesson] ON [lesson_id] = [Lesson].id
 													WHERE Schedule.[Date] >= @dateFrom
 													AND Schedule.[Date] <= @dateTo 
-													AND [User].[user_guid] = @userId",new {dateFrom = dateFrom, dateTo = dateTo, userId = userId}).ToList();
+													AND [User].[user_guid] = @userId", new { dateFrom = dateFrom, dateTo = dateTo, userId = userId }).ToList();
 
                 return result;
             }
         }
-        public List<Material> GetMaterials()
+        public List<Material> GetCourses()
         {
             using (IDbConnection db = Connection)
             {
@@ -81,6 +92,22 @@ namespace NewDiploma.Repositories
                                                     LEFT JOIN [ScheduleStudent] ON [StudentGroup].[user_id] = [ScheduleStudent].[student_id] AND [ScheduleStudent].[schedule_id] = [Schedule].[id] 
 													JOIN [User] AS Teacher_User ON [Schedule].[teacher_id] = [Teacher_User].id 
                                                     WHERE [Schedule].[date] = @date AND [Schedule].[lesson_id] = @lesson AND [Teacher_User].[user_guid] = @userId", new { lesson = lesson, date = date, userId = userId }).ToList();
+
+                return result;
+            }
+        }
+
+        public List<StudentAttendance> GetStudentAttendances(string groupName)
+        {
+            using (IDbConnection db = Connection)
+            {
+                var result = db.Query<StudentAttendance>(@"  SELECT Schedule.[lesson_id], Course.[name] as 'CourseName', [User].[FIO] as 'FIO'
+                                                             FROM [Schedule]
+                                                             JOIN [Course] ON [course_id] = [Course].id
+                                                             JOIN [Group] ON [Schedule].group_id = [GROUP].id
+                                                             JOIN [StudentGroup] ON [Group].id = [StudentGroup].[group_id]
+                                                             JOIN [User] ON [StudentGroup].[user_id] = [User].[id]
+                                                             WHERE [Group].name = @groupName", new { groupName = groupName }).ToList();
 
                 return result;
             }

@@ -336,7 +336,6 @@ body.dark .switch::before {
         background-color: var(--body-color);
         border-radius: 10px;
         border: 2px solid var(--primary-color);
-        box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.25);
     }
 
 .sidebar.close ~ .home {
@@ -382,6 +381,7 @@ ul {
     flex: 20%;
     border-radius: 12px;
     margin-right: 20px;
+    height: 100%;
 }
 
 .group-right {
@@ -390,9 +390,58 @@ ul {
     border-radius: 12px;
 }
 
-.group-list {
+.group-search {
     margin: 10px;
 }
+
+.group-list {
+    margin: 10px;
+    overflow-y: scroll;
+    padding-right: 10px;
+    height: 35vh;
+}
+
+    .group-list::-webkit-scrollbar {
+        border-radius: 10px;
+        width: 20px;
+        height: 20px;
+        background-color: var(--primary-color);
+    }
+
+    .group-list::-webkit-scrollbar-thumb {
+        background-color: var(--body-color);
+        border-radius: 10px;
+        border: 2px solid var(--primary-color);
+    }
+
+.group-list-100 {
+    display: flex;
+    flex-direction: column;
+}
+
+.group-list-50 {
+    flex: 50%;
+}
+
+.group-table {
+    height: 82vh;
+    overflow-y: scroll;
+    margin: 10px;
+    margin-right: 10px;
+}
+
+    .group-table::-webkit-scrollbar {
+        border-radius: 10px;
+        width: 20px;
+        height: 20px;
+        background-color: var(--primary-color);
+    }
+
+    .group-table::-webkit-scrollbar-thumb {
+        background-color: var(--body-color);
+        border-radius: 10px;
+        border: 2px solid var(--primary-color);
+    }
 
 .input-style {
     width: 100%;
@@ -400,7 +449,6 @@ ul {
     border: none;
     background: var(--primary-color);
     height: 30px;
-    margin-bottom: 10px;
 }
 
 .group-item {
@@ -415,11 +463,30 @@ ul {
     font-size: 20px;
 }
 
+.group-overflow {
+    width: 100%;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+    .group-overflow::-webkit-scrollbar {
+        border-radius: 10px;
+        width: 20px;
+        height: 20px;
+        background-color: var(--primary-color);
+    }
+
+    .group-overflow::-webkit-scrollbar-thumb {
+        background-color: var(--body-color);
+        border-radius: 10px;
+        border: 2px solid var(--primary-color);
+    }
+
 /*Students*/
 
 .student-table {
-    width: 100%;
     padding: 10px;
+    width: 100%;
 }
 
     .student-table th {
@@ -666,4 +733,23 @@ ul {
     font-weight: bold;
     border: hidden;
     border-radius: 10px;
+}
+
+/*Students*/
+
+.student-table tbody {
+    overflow-y: scroll;
+}
+
+.student-table::-webkit-scrollbar {
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+}
+
+.student-table::-webkit-scrollbar-thumb {
+    background-color: var(--body-color);
+    border-radius: 10px;
+    border: 2px solid var(--primary-color);
 }

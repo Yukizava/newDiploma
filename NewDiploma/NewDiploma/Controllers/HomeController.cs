@@ -22,8 +22,6 @@ namespace NewDiploma.Controllers
 
         public IActionResult Index()
         {
-            
-
             return View();
         }
 
@@ -43,48 +41,63 @@ namespace NewDiploma.Controllers
             return View();
         }
 
-        public IActionResult Schedule([FromQuery]string date)
+        public IActionResult Schedule([FromQuery] string date)
         {
-            var dateNow = DateTime.Now;
+            var dateNow = DateTime.Now.Date;
             if (date != null)
             {
                 dateNow = DateTime.Parse(date);
             }
             var user = _usermanager.GetUserAsync(User).Result;
             var schedule = _service.GetSchedule(dateNow, user);
-            
+
             return View(schedule);
         }
 
-        public IActionResult Presents([FromQuery]int lesson)
+        public IActionResult Presents([FromQuery] int lesson)
         {
-            var user = _usermanager.GetUserAsync(User).Result; 
+            var user = _usermanager.GetUserAsync(User).Result;
             var presents = _service.GetPresents(lesson, user);
             return View(presents);
         }
 
         public IActionResult Students([FromQuery] string groupName)
         {
-
+            var groups = _service.GetGroups();
             var students = _service.GetStudents(groupName);
-            return View(students);
+            var result = new StudentList { Groups = groups, Students = students };
+            return View(result);
         }
 
-        public IActionResult GroupsPage()
+        public IActionResult GroupsPage([FromQuery] string groupName, [FromQuery] string courseName)
         {
-            return View();
+            var groups = _service.GetGroups();
+            var courses = _service.GetCourses();
+            var attendances = _service.GetStudentAttendances(groupName, courseName);
+            var result = new GroupPageList { Groups = groups , Attendances = attendances, Courses = courses};
+            return View(result);
         }
 
-        public IActionResult Materials()
+        public IActionResult Materials([FromQuery] string courseName)
         {
-            var materials = _service.GetMaterials();
-            return View(materials);
+            var courses = _service.GetCourses();
+            return View(courses);
         }
 
         public IActionResult Notification()
         {
             return View();
         }
+
+        //[HttpPost]
+        //public JsonResult SearchCustomers(string customerName)
+        //{
+        //    NorthwindEntities entities = new NorthwindEntities();
+        //    var customers = from c in entities.Customers
+        //                    where c.ContactName.Contains(customerName)
+        //                    select c;
+        //    return Json(customers.ToList().Take(10));
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

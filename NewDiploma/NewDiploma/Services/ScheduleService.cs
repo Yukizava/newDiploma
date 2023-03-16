@@ -39,9 +39,9 @@ namespace NewDiploma.Services
             return _repository.GetStudents(groupName);   
         }
 
-		public List<Material> GetMaterials()
+		public List<Material> GetCourses()
 		{
-			return _repository.GetMaterials();
+			return _repository.GetCourses();
 		}
 
         public List<Present> GetPresents(int lesson, Data.Identity.ApplicationIdentityUser user)
@@ -54,5 +54,14 @@ namespace NewDiploma.Services
             return presents;
         }
 
+        public List<Group> GetGroups()
+        {
+            return _repository.GetGroups();
+        }
+
+        public List<StudentAttendance> GetStudentAttendances(string groupName, string courseName)
+        {
+            return _repository.GetStudentAttendances(groupName);
+        }
     }
 }
