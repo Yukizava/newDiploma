@@ -97,17 +97,25 @@ namespace NewDiploma.Repositories
             }
         }
 
-        public List<StudentAttendance> GetStudentAttendances(string groupName)
+        public List<StudentAttendance> GetStudentAttendances(string groupName, string courseName)
         {
+            if (string.IsNullOrWhiteSpace(groupName))
+            {
+                groupName = string.Empty;
+            }
+            if (string.IsNullOrWhiteSpace(courseName))
+            {
+                courseName = string.Empty;
+            }
             using (IDbConnection db = Connection)
             {
-                var result = db.Query<StudentAttendance>(@"  SELECT Schedule.[lesson_id], Course.[name] as 'CourseName', [User].[FIO] as 'FIO'
+                var result = db.Query<StudentAttendance>(@"  SELECT Schedule.[lesson_id], Course.[name] as 'CourseName', [User].[FIO] as 'FIO', [Schedule].type as 'LessonType'
                                                              FROM [Schedule]
                                                              JOIN [Course] ON [course_id] = [Course].id
                                                              JOIN [Group] ON [Schedule].group_id = [GROUP].id
                                                              JOIN [StudentGroup] ON [Group].id = [StudentGroup].[group_id]
                                                              JOIN [User] ON [StudentGroup].[user_id] = [User].[id]
-                                                             WHERE [Group].name = @groupName", new { groupName = groupName }).ToList();
+                                                             WHERE [Group].name LIKE '%'+@groupName+'%' AND [Course].name LIKE '%'+@courseName+'%'", new { groupName = groupName, courseName = courseName }).ToList();
 
                 return result;
             }

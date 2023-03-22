@@ -2,7 +2,7 @@
     ViewData["Title"] = "Студенты";
 }
 <div class="groups">
-    <div class="group-left">
+    <div class="group-left g-width">
         <div class="group-search">
             <input class="input-style" type="text" placeholder="Введите номер группы" name="groupName" id="txtCustomerName" />
         </div>
@@ -40,39 +40,3 @@
         </table>
     </div>
 </div>
-
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-        GetCustomers();
-        $("#txtCustomerName").keyup(function () {
-            GetCustomers();
-        });
-    });
-    function GetCustomers() {
-        var customerName = $.trim($("#txtCustomerName").val());
-        $.ajax({
-            type: "POST",
-            url: "/Home/SearchCustomers",
-            data: "{customerName:'" + customerName + "'}",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (customers) {
-                var table = $("#tblCustomers");
-                table.find("tr:not(:first)").remove();
-                $.each(customers, function (i, customer) {
-                    var table = $("#tblCustomers");
-                    var row = table[0].insertRow(-1);
-                    $(row).append("<td />");
-                    $(row).find("td").eq(0).html(customer.CustomerID);
-                    $(row).append("<td />");
-                    $(row).find("td").eq(1).html(customer.ContactName);
-                    $(row).append("<td />");
-                    $(row).find("td").eq(2).html(customer.City);
-                    $(row).append("<td />");
-                    $(row).find("td").eq(3).html(customer.Country);
-                });
-            }
-        });
-    }
-</script>

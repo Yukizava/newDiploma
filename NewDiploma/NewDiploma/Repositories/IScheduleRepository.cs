@@ -9,6 +9,6 @@ namespace NewDiploma.Repositories
         List<Material> GetCourses();
         List<Present> GetPresents(int lesson, DateTime date, string userId);
         List<Group> GetGroups();
-        List<StudentAttendance> GetStudentAttendances(string groupName);
+        List<StudentAttendance> GetStudentAttendances(string groupName, string courseName);
     }
 }

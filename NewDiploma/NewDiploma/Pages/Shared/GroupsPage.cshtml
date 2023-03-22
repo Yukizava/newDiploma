@@ -1,17 +1,19 @@
 ﻿@{
     ViewData["Title"] = "Посещаемость";
+    var courseName = ViewContext.HttpContext.Request.Query["courseName"].FirstOrDefault();
+    var groupName = ViewContext.HttpContext.Request.Query["groupName"].FirstOrDefault();
 }
 <div class="groups">
-    <div class="group-left">
-        <div class="group-list-100">
-            <div class="group-list-50">
+    <div class="group-list-100">
+        <div class="group-left g-top">
+            <div class="group-list-top">
                 <div class="group-search">
                     <input class="input-style" placeholder="Введите номер группы">
                 </div>
                 <div class="group-list">
                     @foreach (var item in @Model.Groups)
                     {
-                        <a class="group-action" href="@Url.Action("GroupsPage", "Home", new{groupName = @item.GroupName})">
+                        <a class="group-action" href="@Url.Action("GroupsPage", "Home", new{groupName = @item.GroupName, courseName})">
                             <div class="group-item">
                                 <span>@item.GroupName</span>
                             </div>
@@ -19,14 +21,16 @@
                     }
                 </div>
             </div>
-            <div class="group-list-50">
+        </div>
+        <div class="group-left">
+            <div class="group-list-bottom">
                 <div class="group-search">
                     <input class="input-style" placeholder="Введите название предмета">
                 </div>
                 <div class="group-list">
                     @foreach (var item in @Model.Courses)
                     {
-                        <a class="group-action" href="@Url.Action("GroupsPage", "Home", new{courseName = @item.CourseName})">
+                        <a class="group-action" href="@Url.Action("GroupsPage", "Home", new{courseName = @item.CourseName, groupName})">
                             <div class="group-item">
                                 <span>@item.CourseName</span>
                             </div>
@@ -54,11 +58,11 @@
                     {
                         <tr>
                             <td>@item.CourseName</td>
-                            <td>Лекция</td>
-                            <td>@item.FIO</td>
-                            <td>99%</td>
-                        </tr>
-                    }
+                            <td>@(item.LessonType == LessonType.Lesson ? "Лекция" : item.LessonType == LessonType.Practice ? "Практика" : item.LessonType == LessonType.Lab ? "Лабораторная работа 2ч" : item.LessonType == LessonType.DoubleLab ? "Лабораторная работа 4ч" : "")</td>
+                        <td>@item.FIO</td>
+                        <td>99%</td>
+                    </tr>
+        }
                 </tbody>
             </table>
         </div>

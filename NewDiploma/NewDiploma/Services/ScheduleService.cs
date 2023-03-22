@@ -61,7 +61,7 @@ namespace NewDiploma.Services
 
         public List<StudentAttendance> GetStudentAttendances(string groupName, string courseName)
         {
-            return _repository.GetStudentAttendances(groupName);
+            return _repository.GetStudentAttendances(groupName, courseName);
         }
     }
 }
