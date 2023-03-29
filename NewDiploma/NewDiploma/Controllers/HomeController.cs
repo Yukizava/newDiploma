@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using NewDiploma.Data.Identity;
+using System.Data;
 
 namespace NewDiploma.Controllers
 {
@@ -56,9 +57,12 @@ namespace NewDiploma.Controllers
 
         public IActionResult Presents([FromQuery] int lesson)
         {
+            var dateNow = DateTime.Now.Date;
             var user = _usermanager.GetUserAsync(User).Result;
+            var getLessons = _service.GetSchedule(dateNow, user);
             var presents = _service.GetPresents(lesson, user);
-            return View(presents);
+            var result = new { Presents = presents, Lessons = getLessons};
+            return View(result);
         }
 
         public IActionResult Students([FromQuery] string groupName)
@@ -89,15 +93,11 @@ namespace NewDiploma.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public JsonResult SearchCustomers(string customerName)
-        //{
-        //    NorthwindEntities entities = new NorthwindEntities();
-        //    var customers = from c in entities.Customers
-        //                    where c.ContactName.Contains(customerName)
-        //                    select c;
-        //    return Json(customers.ToList().Take(10));
-        //}
+        public IActionResult SetAttendance([FromQuery] int studentId, [FromQuery] int scheduleId, [FromQuery] int attendance, [FromQuery] int lessonId)
+        {
+            _service.SetAttendance(studentId, scheduleId, attendance);
+            return RedirectToAction("Presents", new { lesson = lessonId });
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

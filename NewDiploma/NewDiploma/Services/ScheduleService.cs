@@ -63,5 +63,10 @@ namespace NewDiploma.Services
         {
             return _repository.GetStudentAttendances(groupName, courseName);
         }
+
+        public void SetAttendance(int studentId, int lessonId, int attendance)
+        {
+            _repository.SetAttendance(studentId, lessonId, attendance);
+        }
     }
 }

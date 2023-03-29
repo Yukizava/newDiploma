@@ -10,5 +10,6 @@ namespace NewDiploma.Repositories
         List<Present> GetPresents(int lesson, DateTime date, string userId);
         List<Group> GetGroups();
         List<StudentAttendance> GetStudentAttendances(string groupName, string courseName);
+        void SetAttendance(int studentId, int lessonId, int attendance);
     }
 }
