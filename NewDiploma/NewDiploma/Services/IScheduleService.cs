@@ -12,5 +12,6 @@ namespace NewDiploma.Services
         List<Group> GetGroups();
         List<StudentAttendance> GetStudentAttendances(string groupName, string courseName);
         void SetAttendance(int studentId, int lessonId, int attendance);
+        void SetPass(int studentId, int lessonId, int pass);
     }
 }

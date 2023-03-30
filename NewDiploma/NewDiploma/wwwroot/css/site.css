@@ -219,7 +219,7 @@ body.dark .sidebar header .toggle {
         background-color: var(--primary-color);
     }
 
-        /*.sidebar li a:hover .icon,
+/*.sidebar li a:hover .icon,
         .sidebar li a:hover .text {
             color: var(--sidebar-color);
         }*/
@@ -681,16 +681,29 @@ ul {
 }
 
 .present-elements {
-    display: table;
+    height: 100%;
+    display: flex;
 }
 
 .present-element {
-    display: table-cell;
-    height: 100%;
-    text-align: center;
-    vertical-align: middle;
+    flex: 100% / 3;
+    margin: auto;
 }
 
+    .present-element a {
+        color: var(--text-color);
+    }
+    .present-element a:hover {
+        color: var(--text-color);
+        opacity: 0.7;
+    }
+
+        .present-element a i {
+            background: var(--primary-color);
+            border-radius: 20px;
+            padding: 10px;
+            color: var(--text-color);
+        }
 /*Present Table*/
 
 .present-table {
@@ -783,6 +796,7 @@ ul {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     border-radius: 10px;
+    margin-left: -20px;
 }
 
     .dropdown-content a {
@@ -799,4 +813,9 @@ ul {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0;
 }

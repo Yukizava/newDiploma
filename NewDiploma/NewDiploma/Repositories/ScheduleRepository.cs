@@ -83,7 +83,7 @@ namespace NewDiploma.Repositories
         {
             using (IDbConnection db = Connection)
             {
-                var result = db.Query<Present>(@"   SELECT [StudentGroup].user_id as 'StudentId', Schedule.[date], Schedule.[id] as 'ScheduleId', Course.[name] as 'CourseName', [ScheduleStudent].[student_id],[User].[avatar_id] as 'Avatar', [User].[FIO] as 'FIO', [Group].name as 'Group', [User].[user_guid], [Schedule].teacher_id, Teacher_User.user_guid
+                var result = db.Query<Present>(@"   SELECT [StudentGroup].user_id as 'StudentId', Schedule.[date], Schedule.[id] as 'ScheduleId', Course.[name] as 'CourseName', [ScheduleStudent].[student_id], [ScheduleStudent].[attendance], [ScheduleStudent].[pass],[User].[avatar_id] as 'Avatar', [User].[FIO] as 'FIO', [Group].name as 'Group', [User].[user_guid], [Schedule].teacher_id, Teacher_User.user_guid
                                                     FROM [Schedule]
                                                     JOIN [Course] ON [course_id] = [Course].id
                                                     JOIN [Group] ON [Schedule].group_id = [GROUP].id
@@ -136,6 +136,24 @@ namespace NewDiploma.Repositories
 		                                SET attendance = @attendance
 		                                WHERE schedule_id = @scheduleId AND student_id = @studentId
 	                                END", new { scheduleId = scheduleId, studentId = studentId, attendance = attendance});
+            };
+        }
+
+        public void SetPass(int studentId, int scheduleId, int pass)
+        {
+            using (IDbConnection db = Connection)
+            {
+                db.Query(@"IF NOT EXISTS(SELECT * FROM ScheduleStudent WHERE schedule_id = @scheduleId AND student_id = @studentId)
+	                                BEGIN
+		                                INSERT INTO ScheduleStudent(schedule_id,student_id,attendance,mark,pass)
+		                                VALUES (@scheduleId,@studentId,NULL,NULL,@pass)
+	                                END
+                                ELSE
+	                                BEGIN
+		                                UPDATE ScheduleStudent 
+		                                SET pass = @pass
+		                                WHERE schedule_id = @scheduleId AND student_id = @studentId
+	                                END", new { scheduleId = scheduleId, studentId = studentId, pass = pass });
             };
         }
     }

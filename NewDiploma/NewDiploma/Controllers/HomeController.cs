@@ -99,6 +99,12 @@ namespace NewDiploma.Controllers
             return RedirectToAction("Presents", new { lesson = lessonId });
         }
 
+        public IActionResult SetPass([FromQuery] int studentId, [FromQuery] int scheduleId, [FromQuery] int pass, [FromQuery] int lessonId)
+        {
+            _service.SetPass(studentId, scheduleId, pass);
+            return RedirectToAction("Presents", new { lesson = lessonId });
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

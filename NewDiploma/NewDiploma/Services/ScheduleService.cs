@@ -68,5 +68,10 @@ namespace NewDiploma.Services
         {
             _repository.SetAttendance(studentId, lessonId, attendance);
         }
+
+        public void SetPass(int studentId, int lessonId, int pass)
+        {
+            _repository.SetPass(studentId, lessonId, pass);
+        }
     }
 }

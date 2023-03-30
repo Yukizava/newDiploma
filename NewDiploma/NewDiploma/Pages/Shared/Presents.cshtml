@@ -4,7 +4,8 @@
 }
 <div class="present-main">
     <div id="present-items">
-        @for (var i = 1; i <= 8; i++){
+        @for (var i = 1; i <= 8; i++)
+        {
             <a class="present-links" href="@Url.Action("Presents", "Home", new{lesson = i})">
                 <div class="present-item @(lessonNumber == i.ToString()?"pl-a":"")">
                     <span>@i пара</span>
@@ -26,24 +27,24 @@
             </div>
             <div class="group-present-right">
                 <div class="present-elements">
-                    <a href="#">
-                        <div class="present-element">
+                    <div class="present-element">
+                        <a href="#">
                             <i class='bx bx-check icon'></i>
                             <span>Сохранить</span>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="present-element">
+                        </a>
+                    </div>
+                    <div class="present-element">
+                        <a href="#">
                             <i class='bx bx-x icon'></i>
                             <span>Отмена</span>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="present-element">
+                        </a>
+                    </div>
+                    <div class="present-element">
+                        <a href="#">
                             <i class='bx bx-import icon'></i>
                             <span>Отправить материал</span>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,7 +63,7 @@
                     </tr>
                     @foreach (var item in @Model.Presents)
                     {
-                        
+
                         <tr>
                             <td><img src="~/img/pic/test.png" draggable="false" /></td>
                             <td><span id="pn">@item.FIO</span></td>
@@ -70,9 +71,9 @@
                             <td>
                                 <div class="dropdown">
                                     @*Доделать*@
-                                    <button class="dropbtn">@(Model.StudentAttendance == 0?"Опоздал":"")</button>
+                                    <button class="dropbtn">@(item.Attendance == 0 ? "Отсутствует" : item.Attendance == 1 ? "Опоздал" : item.Attendance == 2 ? "Присутствует" : "-")</button>
                                     <div class="dropdown-content">
-                                        <a href="@Url.Action("SetAttendance", "Home", new{attendance = 0, studentId = @item.StudentId, scheduleId = @item.ScheduleId, lessonId = lessonNumber})">Отсутсвует</a>
+                                        <a href="@Url.Action("SetAttendance", "Home", new{attendance = 0, studentId = @item.StudentId, scheduleId = @item.ScheduleId, lessonId = lessonNumber})">Отсутствует</a>
                                         <a href="@Url.Action("SetAttendance", "Home", new{attendance = 1, studentId = @item.StudentId, scheduleId = @item.ScheduleId, lessonId = lessonNumber})">Опоздал</a>
                                         <a href="@Url.Action("SetAttendance", "Home", new{attendance = 2, studentId = @item.StudentId, scheduleId = @item.ScheduleId, lessonId = lessonNumber})">Присутствует</a>
                                     </div>
@@ -80,8 +81,8 @@
                             </td>
                             <td>
                                 <div class="dropdown">
-                                    <button class="dropbtn">-</button>
-                                    <div class="dropdown-content">
+                                    <button class="dropbtn">@(item.Pass == 0 ? "Нет" : item.Pass == 1 ? "Выполнено" : item.Pass == 2 ? "Защита" : "-")</button>
+                                    <div class="dropdown-content @(item.Attendance > 0?"":"disabled")">
                                         <a href="@Url.Action("SetPass", "Home", new{pass = 0, studentId = @item.StudentId, scheduleId = @item.ScheduleId, lessonId = lessonNumber})">Нет</a>
                                         <a href="@Url.Action("SetPass", "Home", new{pass = 1, studentId = @item.StudentId, scheduleId = @item.ScheduleId, lessonId = lessonNumber})">Выполнено</a>
                                         <a href="@Url.Action("SetPass", "Home", new{pass = 2, studentId = @item.StudentId, scheduleId = @item.ScheduleId, lessonId = lessonNumber})">Защита</a>
