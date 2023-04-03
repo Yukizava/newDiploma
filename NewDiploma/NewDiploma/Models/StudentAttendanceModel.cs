@@ -1,9 +1,11 @@
 ﻿namespace NewDiploma.Models
 {
-    public class StudentAttendance
+    public class StudentAttendanceModel
     {
         public string FIO { get; set; }
-        public int Attendance { get; set; }
+        public int StudentAttendance { get; set; }
+        public double AttendancePercent { get; set; }
+        public int AttendanceTotal { get; set; }
         public string Group { get; set; }
         public string CourseName { get; set; }
         public LessonType LessonType { get; set; }

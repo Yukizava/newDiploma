@@ -97,7 +97,7 @@ namespace NewDiploma.Repositories
             }
         }
 
-        public List<StudentAttendance> GetStudentAttendances(string groupName, string courseName)
+        public List<StudentAttendanceModel> GetStudentAttendances(string groupName, string courseName)
         {
             if (string.IsNullOrWhiteSpace(groupName))
             {
@@ -109,13 +109,24 @@ namespace NewDiploma.Repositories
             }
             using (IDbConnection db = Connection)
             {
-                var result = db.Query<StudentAttendance>(@"  SELECT Schedule.[lesson_id], Course.[name] as 'CourseName', [User].[FIO] as 'FIO', [Schedule].type as 'LessonType'
-                                                             FROM [Schedule]
-                                                             JOIN [Course] ON [course_id] = [Course].id
-                                                             JOIN [Group] ON [Schedule].group_id = [GROUP].id
-                                                             JOIN [StudentGroup] ON [Group].id = [StudentGroup].[group_id]
-                                                             JOIN [User] ON [StudentGroup].[user_id] = [User].[id]
-                                                             WHERE [Group].name LIKE '%'+@groupName+'%' AND [Course].name LIKE '%'+@courseName+'%'", new { groupName = groupName, courseName = courseName }).ToList();
+                var result = db.Query<StudentAttendanceModel>(@" SELECT CourseName, FIO, LessonType, StudentAttendance, AttendanceTotal, CAST(StudentAttendance as DECIMAL)/CAST(AttendanceTotal as DECIMAL) * 100 as AttendancePercent
+                                                            FROM 
+                                                            (SELECT Course.[name] as 'CourseName', [User].[FIO] as 'FIO', [Schedule].type as 'LessonType', COUNT(*) as StudentAttendance, 
+	                                                            (
+	                                                            SELECT COUNT(*)
+	                                                            FROM [Schedule] as Schedule2
+	                                                            JOIN [Course] as Course2 ON [Schedule2].[course_id] = [Course2].id
+	                                                            WHERE [Schedule2].[type] = [Schedule].[type] AND [Course2].[name] = [Course].[name] AND [Schedule2].group_id = [Schedule].group_id
+	                                                            ) as AttendanceTotal
+                                                            FROM [Schedule]
+                                                            JOIN [Course] ON [Schedule].[course_id] = [Course].id
+                                                            JOIN [Group] ON [Schedule].group_id = [GROUP].id
+                                                            JOIN [StudentGroup] ON [Group].id = [StudentGroup].[group_id]
+                                                            JOIN [User] ON [StudentGroup].[user_id] = [User].[id]
+                                                            LEFT JOIN [ScheduleStudent] ON [StudentGroup].[user_id] = [ScheduleStudent].[student_id] AND [ScheduleStudent].[schedule_id] = [Schedule].[id]		
+                                                            WHERE [ScheduleStudent].attendance IN (1,2) AND [Group].name LIKE '%'+@groupName+'%' AND [Course].name LIKE '%'+@courseName+'%'
+                                                            GROUP BY [Course].[name],[User].[FIO], [Schedule].[type], [Schedule].[group_id]
+                                                            ) as Result", new { groupName = groupName, courseName = courseName }).ToList();
 
                 return result;
             }

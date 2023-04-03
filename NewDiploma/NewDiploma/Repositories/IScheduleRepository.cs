@@ -9,7 +9,7 @@ namespace NewDiploma.Repositories
         List<Material> GetCourses();
         List<Present> GetPresents(int lesson, DateTime date, string userId);
         List<Group> GetGroups();
-        List<StudentAttendance> GetStudentAttendances(string groupName, string courseName);
+        List<StudentAttendanceModel> GetStudentAttendances(string groupName, string courseName);
         void SetAttendance(int studentId, int lessonId, int attendance);
 
         void SetPass(int studentId, int lessonId, int pass);

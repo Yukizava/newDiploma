@@ -10,7 +10,7 @@ namespace NewDiploma.Services
 
         List<Present> GetPresents(int lesson, Data.Identity.ApplicationIdentityUser user);
         List<Group> GetGroups();
-        List<StudentAttendance> GetStudentAttendances(string groupName, string courseName);
+        List<StudentAttendanceModel> GetStudentAttendances(string groupName, string courseName);
         void SetAttendance(int studentId, int lessonId, int attendance);
         void SetPass(int studentId, int lessonId, int pass);
     }

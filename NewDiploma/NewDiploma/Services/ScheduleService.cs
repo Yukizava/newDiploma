@@ -59,9 +59,13 @@ namespace NewDiploma.Services
             return _repository.GetGroups();
         }
 
-        public List<StudentAttendance> GetStudentAttendances(string groupName, string courseName)
+        public List<StudentAttendanceModel> GetStudentAttendances(string groupName, string courseName)
         {
-            return _repository.GetStudentAttendances(groupName, courseName);
+            var result = _repository.GetStudentAttendances(groupName, courseName);
+
+            
+
+            return result;
         }
 
         public void SetAttendance(int studentId, int lessonId, int attendance)
