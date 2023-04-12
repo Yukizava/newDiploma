@@ -10,7 +10,7 @@
                 <div class="group-search">
                     <input class="input-style" placeholder="Введите номер группы">
                 </div>
-                <div class="group-list">
+                <div class="group-list gp">
                     @foreach (var item in @Model.Groups)
                     {
                         <a class="group-action" href="@Url.Action("GroupsPage", "Home", new{groupName = @item.GroupName, courseName})">
@@ -27,7 +27,7 @@
                 <div class="group-search">
                     <input class="input-style" placeholder="Введите название предмета">
                 </div>
-                <div class="group-list">
+                <div class="group-list gp">
                     @foreach (var item in @Model.Courses)
                     {
                         <a class="group-action" href="@Url.Action("GroupsPage", "Home", new{courseName = @item.CourseName, groupName})">

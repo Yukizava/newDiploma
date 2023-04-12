@@ -398,7 +398,7 @@ ul {
     margin: 10px;
     overflow-y: scroll;
     padding-right: 10px;
-    height: 35vh;
+    height: 80vh;
 }
 
     .group-list::-webkit-scrollbar {
@@ -483,6 +483,16 @@ ul {
         border-radius: 0px 12px 12px 0px;
         border: 2px solid var(--primary-color);
     }
+
+/*Groups default*/
+
+.gp {
+    height: 35vh;
+}
+
+.ns{
+    overflow-y: hidden;
+}
 
 /*Students*/
 
