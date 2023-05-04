@@ -4,6 +4,7 @@
     {
         public int? AvatarId { get; set; }
         public int StudentId { get; set; }
+        public bool Leader { get; set; }
         public string FIO { get; set; }
         public int? Attendance { get; set; }
         public int? Pass { get; set; }

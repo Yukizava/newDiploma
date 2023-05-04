@@ -760,6 +760,11 @@ ul {
     border-radius: 10px;
 }
 
+#leader{
+    border: 3px solid var(--text-color);
+    border-radius: 60px;
+}
+
 /*Students*/
 
 .student-table tbody {

@@ -64,9 +64,9 @@
                     {
 
                         <tr>
-                            
-                            <td><img src="~/img/pic/test.png" draggable="false" /></td>
-                            <td><span id="pn">@item.FIO</span></td>
+
+                            <td><img id="@(item.Leader == true ? "leader":"")" src="~/img/pic/test.png" draggable="false" /></td>
+                            <td><span id="pn">@item.FIO @(item.Leader == true ? "(Староста)":"")</span></td>
                             <td>
                                 <div class="dropdown">
                                     @*Доделать*@

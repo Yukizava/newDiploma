@@ -50,6 +50,7 @@
                         <th>Предмет</th>
                         <th>Тип</th>
                         <th>Фамилия Имя Отчество</th>
+                        <th>Успеваемость</th>
                         <th>Посещаемость</th>
                     </tr>
                 </thead>
@@ -60,6 +61,7 @@
                             <td>@item.CourseName</td>
                             <td>@(item.LessonType == LessonType.Lesson ? "Лекция" : item.LessonType == LessonType.Practice ? "Практика" : item.LessonType == LessonType.Lab ? "Лабораторная работа 2ч" : item.LessonType == LessonType.DoubleLab ? "Лабораторная работа 4ч" : "")</td>
                             <td>@item.FIO</td>
+                            <td>@item.PassPercent.ToString("F1")%</td>
                             <td>@item.AttendancePercent.ToString("F1")%</td>
                         </tr>
                     }

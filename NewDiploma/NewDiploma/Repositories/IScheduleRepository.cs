@@ -13,5 +13,6 @@ namespace NewDiploma.Repositories
         void SetAttendance(int studentId, int lessonId, int attendance);
 
         void SetPass(int studentId, int lessonId, int pass);
+        List<StudentAttendanceModel> GetStudentPasses(string groupName, string courseName);
     }
 }

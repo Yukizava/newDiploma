@@ -83,7 +83,7 @@ namespace NewDiploma.Repositories
         {
             using (IDbConnection db = Connection)
             {
-                var result = db.Query<Present>(@"   SELECT [StudentGroup].user_id as 'StudentId', Schedule.[date], Schedule.[id] as 'ScheduleId', Course.[name] as 'CourseName', [ScheduleStudent].[student_id], [ScheduleStudent].[attendance], [ScheduleStudent].[pass],[User].[avatar_id] as 'Avatar', [User].[FIO] as 'FIO', [Group].name as 'Group', [User].[user_guid], [Schedule].teacher_id, Teacher_User.user_guid
+                var result = db.Query<Present>(@"   SELECT [StudentGroup].user_id as 'StudentId', Schedule.[date], Schedule.[id] as 'ScheduleId', Course.[name] as 'CourseName', [ScheduleStudent].[student_id], [ScheduleStudent].[attendance], [ScheduleStudent].[pass],[StudentGroup].leader,[User].[avatar_id] as 'Avatar', [User].[FIO] as 'FIO', [Group].name as 'Group', [User].[user_guid], [Schedule].teacher_id, Teacher_User.user_guid
                                                     FROM [Schedule]
                                                     JOIN [Course] ON [course_id] = [Course].id
                                                     JOIN [Group] ON [Schedule].group_id = [GROUP].id
@@ -125,6 +125,41 @@ namespace NewDiploma.Repositories
                                                             JOIN [User] ON [StudentGroup].[user_id] = [User].[id]
                                                             LEFT JOIN [ScheduleStudent] ON [StudentGroup].[user_id] = [ScheduleStudent].[student_id] AND [ScheduleStudent].[schedule_id] = [Schedule].[id]		
                                                             WHERE [ScheduleStudent].attendance IN (1,2) AND [Group].name LIKE '%'+@groupName+'%' AND [Course].name LIKE '%'+@courseName+'%'
+                                                            GROUP BY [Course].[name],[User].[FIO], [Schedule].[type], [Schedule].[group_id]
+                                                            ) as Result", new { groupName = groupName, courseName = courseName }).ToList();
+
+                return result;
+            }
+        }
+
+        public List<StudentAttendanceModel> GetStudentPasses(string groupName, string courseName)
+        {
+            if (string.IsNullOrWhiteSpace(groupName))
+            {
+                groupName = string.Empty;
+            }
+            if (string.IsNullOrWhiteSpace(courseName))
+            {
+                courseName = string.Empty;
+            }
+            using (IDbConnection db = Connection)
+            {
+                var result = db.Query<StudentAttendanceModel>(@" SELECT CourseName, FIO, LessonType, StudentPass, PassTotal, CAST(StudentPass as DECIMAL)/CAST(PassTotal as DECIMAL) * 100 as PassPercent
+                                                            FROM 
+                                                            (SELECT Course.[name] as 'CourseName', [User].[FIO] as 'FIO', [Schedule].type as 'LessonType', COUNT(*) as StudentPass, 
+	                                                            (
+	                                                            SELECT COUNT(*)
+	                                                            FROM [Schedule] as Schedule2
+	                                                            JOIN [Course] as Course2 ON [Schedule2].[course_id] = [Course2].id
+	                                                            WHERE [Schedule2].[type] = [Schedule].[type] AND [Course2].[name] = [Course].[name] AND [Schedule2].group_id = [Schedule].group_id
+	                                                            ) as PassTotal
+                                                            FROM [Schedule]
+                                                            JOIN [Course] ON [Schedule].[course_id] = [Course].id
+                                                            JOIN [Group] ON [Schedule].group_id = [GROUP].id
+                                                            JOIN [StudentGroup] ON [Group].id = [StudentGroup].[group_id]
+                                                            JOIN [User] ON [StudentGroup].[user_id] = [User].[id]
+                                                            LEFT JOIN [ScheduleStudent] ON [StudentGroup].[user_id] = [ScheduleStudent].[student_id] AND [ScheduleStudent].[schedule_id] = [Schedule].[id]		
+                                                            WHERE [ScheduleStudent].pass IN (2) AND [Group].name LIKE '%'+@groupName+'%' AND [Course].name LIKE '%'+@courseName+'%'
                                                             GROUP BY [Course].[name],[User].[FIO], [Schedule].[type], [Schedule].[group_id]
                                                             ) as Result", new { groupName = groupName, courseName = courseName }).ToList();
 

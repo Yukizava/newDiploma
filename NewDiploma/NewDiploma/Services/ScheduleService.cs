@@ -61,11 +61,20 @@ namespace NewDiploma.Services
 
         public List<StudentAttendanceModel> GetStudentAttendances(string groupName, string courseName)
         {
-            var result = _repository.GetStudentAttendances(groupName, courseName);
+            var attendances = _repository.GetStudentAttendances(groupName, courseName);
+            var passes = _repository.GetStudentPasses(groupName, courseName);
+            foreach (var item in attendances)
+            {
+                var pass = passes.FirstOrDefault(x => x.Group == item.Group && x.CourseName == item.CourseName && x.FIO == item.FIO);
+                if (pass != null)
+                {
+                    item.PassPercent = pass.PassPercent;
+                    item.PassTotal = pass.PassTotal;
+                    item.StudentPass = pass.StudentPass;
+                }
+            }
 
-            
-
-            return result;
+            return attendances;
         }
 
         public void SetAttendance(int studentId, int lessonId, int attendance)
