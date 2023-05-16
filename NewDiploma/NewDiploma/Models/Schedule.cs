@@ -19,5 +19,7 @@
         public int Type { get; set; }
 
         public string Room { get; set; }
+
+        public string Message { get; set; }
     }
 }

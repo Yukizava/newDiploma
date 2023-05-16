@@ -88,9 +88,13 @@ namespace NewDiploma.Controllers
             return View(courses);
         }
 
-        public IActionResult Notification()
+        public IActionResult Notification([FromQuery] string date)
         {
-            return View();
+            var dateNow = DateTime.Now.Date;
+            var user = _usermanager.GetUserAsync(User).Result;
+            var schedule = _service.GetSchedule(dateNow, user);
+
+            return View(schedule);
         }
 
         public IActionResult SetAttendance([FromQuery] int studentId, [FromQuery] int scheduleId, [FromQuery] int attendance, [FromQuery] int lessonId)
@@ -110,6 +114,19 @@ namespace NewDiploma.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        [HttpPost]
+        public void Create(CreatePost model)
+        {
+            var img = model.MyImage;
+            var imgCaption = model.ImageCaption;
 
+            //Getting file meta data
+            var fileName = Path.GetFileName(model.MyImage.FileName);
+            var contentType = model.MyImage.ContentType;
+
+            // do something with the above data
+            // to do : return something
+        
+        }
     }
 }

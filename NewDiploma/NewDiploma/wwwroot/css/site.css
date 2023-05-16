@@ -444,6 +444,22 @@ ul {
         border: 2px solid var(--primary-color);
     }
 
+input {
+    border-radius: 10px;
+    border: none;
+    background: var(--primary-color);
+    height: 30px;
+    margin-bottom: 10px;
+    
+}
+
+button {
+    border-radius: 10px;
+    border: none;
+    background: var(--primary-color);
+    height: 30px;
+}
+
 .input-style {
     width: 100%;
     border-radius: 10px;

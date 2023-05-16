@@ -56,7 +56,8 @@ namespace NewDiploma.Repositories
                                                            [Lesson].id as 'LessonNumber',
                                                            Schedule.[type] as 'Type',
                                                            Schedule.[Date] as 'Date',
-                                                           Schedule.Room as 'Room'
+                                                           Schedule.Room as 'Room',
+                                                           Schedule.[message] as 'Message'
                                                     FROM Schedule
                                                     JOIN [Group] ON [group_id] = [GROUP].id
                                                     JOIN [Course] ON [course_id] = [Course].id

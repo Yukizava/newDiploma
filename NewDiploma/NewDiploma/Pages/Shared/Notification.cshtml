@@ -1,11 +1,19 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Объявления";
 }
 
 <div class="groups">
     <div class="group-right">
-        123123
-
+        @foreach (var item in @Model)
+        {
+            if (item.Type == 0)
+            {
+                <div class="schedule-card">
+                    <span>@item.Course гр. @item.Group</span>
+                    <span>@item.Message</span>
+                    <span>Дата создания обращения: @item.Date.ToString("dd/MM/yy")</span>
+                </div>
+            }
+        }
     </div>
 </div>
