@@ -19,24 +19,26 @@
     </div>
 
     <div class="group-right">
-        <table class="student-table">
-            <thead>
-                <tr>
-                    <th>Фамилия Имя Отчество</th>
-                    <th>Номер группы</th>
-                    <th>Год обучения</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in @Model.Students)
-                {
+        <div class="group-list glr">
+            <table class="student-table">
+                <thead>
                     <tr>
-                        <td>@item.FIO</td>
-                        <td>@item.GroupName</td>
-                        <td>@item.StartYear</td>
+                        <th>Фамилия Имя Отчество</th>
+                        <th>Номер группы</th>
+                        <th>Год обучения</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in @Model.Students)
+                    {
+                        <tr>
+                            <td>@item.FIO</td>
+                            <td>@item.GroupName</td>
+                            <td>@item.StartYear</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

@@ -42,7 +42,7 @@
                     <div class="present-element">
                         <a href="#">
                             <i class='bx bx-import icon'></i>
-                            <span>Отправить материал</span>
+                            <input type="file" id="fileUpload1" onchange="uploadFiles('fileUpload1');"><span>Отправить материал</span>
                         </a>
                     </div>
                 </div>
@@ -96,4 +96,28 @@
     </div>
 }
 
+@section Scripts {
+    <script type="text/javascript">
 
+        function uploadFiles() {
+            var formData = new FormData();
+            var _url = '@Url.Action("UploadMaterial")';
+
+            formData.append('file', $('#fileUpload1')[0].files[0]);
+
+            $.ajax(
+                {
+                    url: _url,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: "POST",
+                    success: function (data) {
+                        // Set the property of the Model.
+                        alert("Файл загружен!");
+                    }
+                }
+            );
+        }
+    </script>
+}

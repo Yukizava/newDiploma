@@ -1,4 +1,6 @@
-﻿using NewDiploma.Models;
+﻿using Microsoft.VisualBasic.FileIO;
+using NewDiploma.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace NewDiploma.Repositories
 {
@@ -14,5 +16,6 @@ namespace NewDiploma.Repositories
 
         void SetPass(int studentId, int lessonId, int pass);
         List<StudentAttendanceModel> GetStudentPasses(string groupName, string courseName);
+        void CreateFile(string fileName, string dataType, byte[] data, int fileType, string userId, long length);
     }
 }

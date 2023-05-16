@@ -17,24 +17,40 @@
             <div class="form-floating">
                 <input asp-for="Input.PhoneNumber" class="form-control" />
                 <label asp-for="Input.PhoneNumber" class="form-label">Номер телефона</label>
-                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span><br/>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span><br />
+            </div>
+            <div>
+                <input type="file" id="fileUpload1" onchange="uploadFiles('fileUpload1');" />
+                <label class="form-label">Аватарка</label>
             </div>
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Сохранить</button>
         </form>
     </div>
 </div>
 
-<div>
-    <form asp-action="Create" enctype="multipart/form-data">   
-
-        <input asp-for="ImageCaption"/>
-        <input asp-for="ImageDescription"/>
-        <input asp-for="MyImage"/>
-        <input type="submit"/>
-    </form>
-</div>
-
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script type="text/javascript">
 
+        function uploadFiles(inputId) {
+            var formData = new FormData();
+            var _url = '@Url.Action("UploadAvatar")';
+
+            formData.append('file', $('#fileUpload1')[0].files[0]);
+
+            $.ajax(
+                {
+                    url: _url,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: "POST",
+                    success: function (data) {
+                        // Set the property of the Model.
+                        alert("Файл загружен!");
+                    }
+                }
+            );
+        }
+    </script>
 }

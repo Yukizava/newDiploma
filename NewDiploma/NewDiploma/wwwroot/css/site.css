@@ -398,7 +398,11 @@ ul {
     margin: 10px;
     overflow-y: scroll;
     padding-right: 10px;
-    height: 80vh;
+    height: 78vh;
+}
+
+.glr {
+    height: 84.2vh;
 }
 
     .group-list::-webkit-scrollbar {

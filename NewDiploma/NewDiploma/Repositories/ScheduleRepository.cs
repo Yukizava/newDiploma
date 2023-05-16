@@ -203,5 +203,14 @@ namespace NewDiploma.Repositories
 	                                END", new { scheduleId = scheduleId, studentId = studentId, pass = pass });
             };
         }
+
+        public void CreateFile(string fileName, string dataType, byte[] data, int fileType, string userId, long length)
+        {
+            using (IDbConnection db = Connection)
+            {
+                db.Query(@"INSERT INTO [File]
+                           VALUES (@fileName, @fileType, GETDATE(), @userId, @data, @length)", new { fileName = fileName, dataType = dataType, data = data, fileType = fileType, userId = userId, length = length});
+            };
+        }
     }
 }

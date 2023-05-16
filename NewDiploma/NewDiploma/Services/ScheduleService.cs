@@ -86,5 +86,27 @@ namespace NewDiploma.Services
         {
             _repository.SetPass(studentId, lessonId, pass);
         }
+
+        public void CreateFile(IFormFile file, int fileType, Data.Identity.ApplicationIdentityUser user)
+        {
+            if (file != null)
+            {
+                var fileName = file.FileName;
+                var dataType = file.ContentType;
+                var data = new byte[0];
+                var userId = user.Id;
+                var length = file.Length;
+                if (file.Length > 0)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        file.CopyTo(ms);
+                        data = ms.ToArray();
+                        
+                    }
+                }
+                _repository.CreateFile(fileName, dataType, data, fileType, userId, length);
+            }
+        }
     }
 }

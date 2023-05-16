@@ -114,19 +114,37 @@ namespace NewDiploma.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
         [HttpPost]
-        public void Create(CreatePost model)
+        public ActionResult UploadAvatar(IFormFile file)
         {
-            var img = model.MyImage;
-            var imgCaption = model.ImageCaption;
+            var user = _usermanager.GetUserAsync(User).Result;
+            if (file != null)
+            {
+                _service.CreateFile(file, 1,user);
+            }
 
-            //Getting file meta data
-            var fileName = Path.GetFileName(model.MyImage.FileName);
-            var contentType = model.MyImage.ContentType;
+            return Json(true);
+        }
+        public ActionResult UploadMaterial(IFormFile file)
+        {
+            var user = _usermanager.GetUserAsync(User).Result;
+            if (file != null)
+            {
+                _service.CreateFile(file, 2, user);
+            }
 
-            // do something with the above data
-            // to do : return something
-        
+            return Json(true);
+        }
+        public ActionResult UploadMethod(IFormFile file)
+        {
+            var user = _usermanager.GetUserAsync(User).Result;
+            if (file != null)
+            {
+                _service.CreateFile(file, 3, user);
+            }
+
+            return Json(true);
         }
     }
 }
