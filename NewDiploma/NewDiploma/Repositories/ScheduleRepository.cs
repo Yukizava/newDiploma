@@ -160,7 +160,7 @@ namespace NewDiploma.Repositories
                                                             JOIN [StudentGroup] ON [Group].id = [StudentGroup].[group_id]
                                                             JOIN [User] ON [StudentGroup].[user_id] = [User].[id]
                                                             LEFT JOIN [ScheduleStudent] ON [StudentGroup].[user_id] = [ScheduleStudent].[student_id] AND [ScheduleStudent].[schedule_id] = [Schedule].[id]		
-                                                            WHERE [ScheduleStudent].pass IN (2) AND [Group].name LIKE '%'+@groupName+'%' AND [Course].name LIKE '%'+@courseName+'%'
+                                                            WHERE [ScheduleStudent].pass IN (2) AND [Schedule].[type] IN (3,4) AND [Group].name LIKE '%'+@groupName+'%' AND [Course].name LIKE '%'+@courseName+'%'
                                                             GROUP BY [Course].[name],[User].[FIO], [Schedule].[type], [Schedule].[group_id]
                                                             ) as Result", new { groupName = groupName, courseName = courseName }).ToList();
 

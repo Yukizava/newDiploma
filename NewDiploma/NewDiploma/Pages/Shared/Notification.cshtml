@@ -2,17 +2,25 @@
     ViewData["Title"] = "Объявления";
 }
 
-<div class="">
-    @foreach (var item in @Model)
-    {
-        if (item.Type == 0)
-        {
 
-            <div class="schedule-card">
-                <span>@item.Course гр. @item.Group</span>
-                <span>Дата создания обращения: @item.Date.ToString("dd/MM/yy")</span>
-                <span>@item.Message</span>
+@foreach (var item in @Model)
+{
+    if (item.Type == 0)
+    {
+        <div class="groups">
+            <div class="group-left">
+                <div class="schedule-card">
+                    <span style="color: var(--text-color);">@item.Course</span>
+                    <span style="color: var(--text-color);">гр. @item.Group</span>
+                    <span style="color: var(--text-color);">Дата публикации: @item.Date.ToString("dd/MM/yy")</span>
+                </div>
             </div>
-        }
+            <div class="groups-right" style="width: 70%">
+                <div class="schedule-card">
+                    <span style="color: var(--text-color);">@item.Message</span>
+                </div>
+            </div>
+        </div>
+        <br>
     }
-</div>
+}
