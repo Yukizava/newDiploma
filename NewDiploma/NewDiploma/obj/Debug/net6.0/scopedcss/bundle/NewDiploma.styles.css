@@ -33,6 +33,55 @@ button.accept-policy[b-1xboy2lcsm] {
   font-size: 1rem;
   line-height: inherit;
 }
+/* _content/NewDiploma/Pages/Shared/_Layout_new.cshtml.rz.scp.css */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-ixdv8gxih4] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a[b-ixdv8gxih4] {
+  color: #0077cc;
+}
+
+.btn-primary[b-ixdv8gxih4] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-ixdv8gxih4], .nav-pills .show > .nav-link[b-ixdv8gxih4] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top[b-ixdv8gxih4] {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-ixdv8gxih4] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-ixdv8gxih4] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-ixdv8gxih4] {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer[b-ixdv8gxih4] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
 /* _content/NewDiploma/Pages/Shared/_Layout_old.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */

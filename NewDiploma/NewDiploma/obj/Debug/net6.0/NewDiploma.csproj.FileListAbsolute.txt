@@ -841,3 +841,4 @@ C:\Users\Андрей\source\repos\newnewDiploma\NewDiploma\NewDiploma\obj\Debug
 C:\Users\Андрей\source\repos\newnewDiploma\NewDiploma\NewDiploma\obj\Debug\net6.0\NewDiploma.csproj.CopyComplete
 C:\Users\Андрей\source\repos\newnewDiploma\NewDiploma\NewDiploma\obj\Debug\net6.0\NewDiploma.genruntimeconfig.cache
 C:\Users\Андрей\source\repos\newnewDiploma\NewDiploma\NewDiploma\obj\Debug\net6.0\ref\NewDiploma.dll
+C:\Users\Андрей\Documents\newDiploma\NewDiploma\NewDiploma\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout_old.cshtml.rz.scp.css
